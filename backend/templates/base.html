@@ -1,0 +1,153 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>Портал директоров образовательных организаций Республики Крым</title>
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+          href="//fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C500%2C600%2C700%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/icon-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/icon-line-pro/style.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/icon-hs/style.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/hs-megamenu/src/hs.megamenu.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/hamburgers/hamburgers.min.css' %}">
+
+    <!-- CSS Unify -->
+    <link rel="stylesheet" href="{% static 'css/unify-core.css' %}">
+    <link rel="stylesheet" href="{% static 'css/unify-components.css' %}">
+    <link rel="stylesheet" href="{% static 'css/unify-globals.css' %}">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+
+<body>
+<main>
+    <!-- Header -->
+    {% include '_partials/header.html' %}
+    <!-- End Header -->
+
+    <!-- Breadcrumbs -->
+    {% block breadcrumbs %}{% endblock %}
+    <!-- End Breadcrumbs -->
+
+    <!-- Red Alert -->
+    <div class="alert alert-dismissible fade show g-bg-red-opacity-0_8 g-color-white rounded-0" role="alert">
+        <button type="button" class="close u-alert-close--light" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+
+        <div class="media">
+            <span class="d-flex g-mr-10 g-mt-5">
+              <i class="icon-ban g-font-size-25"></i>
+            </span>
+            <span class="media-body align-self-center">
+                <strong>Портал создан и проходит тестирование.</strong> Дата запуска: 25.12.2019.
+            </span>
+        </div>
+    </div>
+    <!-- End Red Alert -->
+
+    <!-- Blog Grid Classic Blocks -->
+    <div class="container g-py-50">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- End Blog Grid Classic Blocks -->
+
+    <!-- Footer -->
+    {% include '_partials/footer.html' %}
+    <!-- End Footer -->
+
+    <!-- Copyright Footer -->
+    {% include '_partials/footer_copyright.html' %}
+    <!-- End Copyright Footer -->
+
+    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
+        "bottom": 15,
+        "right": 15
+      }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
+        <i class="hs-icon hs-icon-arrow-top"></i>
+    </a>
+</main>
+
+<!-- JS Global Compulsory -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-migrate/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'vendor/popper.js/popper.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'vendor/bootstrap/offcanvas.js' %}"></script>
+
+<!-- JS Implementing Plugins -->
+<script src="{% static 'vendor/dzsparallaxer/dzsparallaxer.js' %}"></script>
+<script src="{% static 'vendor/dzsparallaxer/dzsscroller/scroller.js' %}"></script>
+<script src="{% static 'vendor/dzsparallaxer/advancedscroller/plugin.js' %}"></script>
+<script src="{% static 'vendor/masonry/dist/masonry.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/slick-carousel/slick/slick.js' %}"></script>
+<script src="{% static 'vendor/fancybox/jquery.fancybox.min.js' %}"></script>
+
+<!-- JS Unify -->
+<script src="{% static 'js/hs.core.js' %}"></script>
+
+<script src="{% static 'js/components/hs.header.js' %}"></script>
+<script src="{% static 'js/helpers/hs.hamburgers.js' %}"></script>
+
+<script src="{% static 'js/components/hs.dropdown.js' %}"></script>
+<script src="{% static 'js/components/hs.popup.js' %}"></script>
+<script src="{% static 'js/components/hs.carousel.js' %}"></script>
+
+<script src="{% static 'js/components/hs.go-to.js' %}"></script>
+
+<!-- JS Custom -->
+<script src="{% static 'js/custom.js' %}"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+    $(document).on('ready', function () {
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+
+        // initialization of carousel
+        $.HSCore.components.HSCarousel.init('.js-carousel');
+
+        // initialization of HSDropdown component
+        $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'));
+
+        // initialization of masonry
+        $('.masonry-grid').imagesLoaded().then(function () {
+            $('.masonry-grid').masonry({
+                columnWidth: '.masonry-grid-sizer',
+                itemSelector: '.masonry-grid-item',
+                percentPosition: true
+            });
+        });
+
+        // initialization of popups
+        $.HSCore.components.HSPopup.init('.js-fancybox');
+    });
+
+    $(window).on('load', function () {
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#js-header'));
+        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+    });
+</script>
+
+</body>
+
+</html>

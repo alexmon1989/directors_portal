@@ -1,0 +1,17 @@
+certifi==2019.9.11
+chardet==3.0.4
+Django==2.2.7
+django-ckeditor==5.8.0
+django-haystack==2.8.1
+django-js-asset==1.2.2
+django-machina==1.0.2
+django-messages==0.6.0
+django-mptt==0.10.0
+django-widget-tweaks==1.4.5
+idna==2.8
+markdown2==2.3.8
+Pillow==6.2.1
+pytz==2019.3
+requests==2.22.0
+sqlparse==0.3.0
+urllib3==1.25.7
