@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block breadcrumbs %}
+    {% include 'news/detail/_partials/breadcrumbs.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            {% if news.image %}
+                <img class="img-fluid" src="{{ news.image.url }}" alt="">
+            {% endif %}
+
+            <div class="g-py-20 font-italic font-weight-bold">{{ news.published_at }}</div>
+
+            {{ news.full_text|safe }}
+        </div>
+
+        <div class="col-md-4">
+            {% include 'news/detail/_partials/other_news.html' %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<h3>Ещё новости</h3>
+
+<ul class="list-unstyled g-mt-20">
+    {% for item in other_news %}
+        <li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-10 g-mb-7">
+            <div class="g-pos-rel g-mr-5">
+                {% if item.image %}
+                    <a href="{% url 'news:detail' slug=item.slug %}"><img class="g-width-50 g-height-50 rounded-circle"
+                                                                          src="{{ item.image.url }}"></a>
+                {% else %}
+                    <a href="{% url 'news:detail' slug=item.slug %}"><img class="g-width-50 g-height-50 rounded-circle"
+                                                                          src="https://via.placeholder.com/450x300.png?text=No+Image"></a>
+                {% endif %}
+            </div>
+
+            <div class="align-self-center g-px-10">
+                <h5 class="h6 g-mb-3">
+                    <a href="{% url 'news:detail' slug=item.slug %}" class="g-font-weight-600 g-color-black"><span
+                            class="g-mr-5">{{ item.title }}</span></a>
+                </h5>
+                <p class="m-0">{{ item.published_at }}</p>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

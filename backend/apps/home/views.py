@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from apps.news.models import News
-from datetime import datetime
+from django.utils import timezone
 
 
 def index(request):
@@ -8,7 +8,7 @@ def index(request):
     news = News.objects.filter(
         is_on_home=True,
         is_visible=True,
-        published_at__lte=datetime.now()
+        published_at__lte=timezone.now()
     ).order_by('-published_at')
 
     return render(

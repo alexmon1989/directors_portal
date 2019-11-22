@@ -1,32 +1,17 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load extras %}
 
 {% block breadcrumbs %}
-    <section class="g-bg-gray-light-v5 g-py-50">
-        <div class="container">
-            <div class="d-sm-flex text-center">
-                <div class="align-self-center">
-                    <h2 class="h3 g-font-weight-500 w-100 g-mb-10 g-mb-0--md">Портал директоров образовательных
-                        организаций Республики Крым</h2>
-                </div>
-            </div>
-        </div>
-    </section>
+    {% include 'news/list/_partials/breadcrumbs.html' %}
 {% endblock %}
 
 
 {% block content %}
-    <div class="row">
-        <div class="col-sm-12 g-pb-20">
-            <h3>Последние новости</h3>
-        </div>
-    </div>
-
-    <div class="masonry-grid row g-mb-70">
+    <div class="masonry-grid row">
         <div class="masonry-grid-sizer col-sm-1"></div>
 
-        {% for item in news|slice:":6" %}
+        {% for item in news_list|slice:":6" %}
             <div class="masonry-grid-item col-sm-6 g-mb-30">
                 <!-- Blog Classic Blocks -->
                 <article class="u-shadow-v11">
@@ -50,4 +35,8 @@
             </div>
         {% endfor %}
     </div>
+
+    {% if is_paginated %}
+        {% pagination page_obj=page_obj get_params=request.GET %}
+    {% endif %}
 {% endblock %}

@@ -28,11 +28,11 @@
                 <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--sm g-font-size-15"
                      id="navBar">
                     <ul class="navbar-nav text-uppercase g-font-weight-600 mr-auto">
-                        <li class="nav-item g-mx-25--lg active">
-                            <a href="#!" class="nav-link px-0">Главная</a>
+                        <li class="nav-item g-mx-25--lg {% if request.resolver_match.app_name == 'home' %}active{% endif %}">
+                            <a href="{% url 'home:index' %}" class="nav-link px-0">Главная</a>
                         </li>
-                        <li class="nav-item g-mx-25--lg">
-                            <a href="#!" class="nav-link px-0">Новости</a>
+                        <li class="nav-item g-mx-25--lg {% if request.resolver_match.app_name == 'news' %}active{% endif %}">
+                            <a href="{% url 'news:list' %}" class="nav-link px-0">Новости</a>
                         </li>
                         <li class="nav-item g-mx-25--lg">
                             <a href="#!" class="nav-link px-0">Форум</a>
