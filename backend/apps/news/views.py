@@ -8,14 +8,14 @@ class NewsListView(ListView):
     """Отображает страницу со списком новостей."""
     model = News
     paginate_by = 6
-    queryset = News.objects.filter(is_visible=True, published_at__lte=timezone.now()).order_by('-published_at')
+    queryset = News.objects.filter(is_visible=True, published_at__gte=timezone.now()).order_by('-published_at')
     template_name = 'news/list/index.html'
 
 
 class NewsDetailView(DetailView):
     """Отображает страницу со списком новостей."""
     model = News
-    queryset = News.objects.filter(is_visible=True, published_at__lte=timezone.now()).order_by('-published_at')
+    queryset = News.objects.filter(is_visible=True, published_at__gte=timezone.now()).order_by('-published_at')
     template_name = 'news/detail/index.html'
 
     def get_context_data(self, **kwargs):
