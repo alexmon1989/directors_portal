@@ -25,6 +25,8 @@ urlpatterns = [
     path('news/', include('apps.news.urls')),
     path('forum/', include(machina_urls)),
     path('messages/', include('django_messages.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('apps.my_auth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

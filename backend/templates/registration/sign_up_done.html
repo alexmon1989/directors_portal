@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация на сайте{% endblock %}
+
+{% block content %}
+
+    <!-- Signup -->
+    <section class="g-bg-gray-light-v5">
+        <div class="container g-py-100">
+            <div class="row justify-content-center">
+                <div class="col-sm-10 col-md-9 col-lg-6">
+                    <div class="u-shadow-v21 g-bg-white rounded g-py-40 g-px-30">
+                        <header class="text-center mb-4">
+                            <h1 class="h2 g-color-black g-font-weight-600">Регистрация прошла успешно</h1>
+                        </header>
+
+                        <p class="text-center g-color-gray-dark-v2 g-font-size-14 mb-0">Спасибо за регистрацию на нашем сайте.<br/>Используйте ваши данные для входа.</p>
+
+                        <div class="text-center g-mt-20">
+                            <a class="btn btn-md u-btn-primary rounded" href="{% url 'login' %}">Войти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Signup -->
+
+{% endblock %}
