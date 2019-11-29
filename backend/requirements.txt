@@ -2,6 +2,7 @@ certifi==2019.9.11
 chardet==3.0.4
 Django==2.2.7
 django-ckeditor==5.8.0
+django-debug-toolbar==2.1
 django-haystack==2.8.1
 django-js-asset==1.2.2
 django-machina==1.0.2
@@ -15,3 +16,4 @@ pytz==2019.3
 requests==2.22.0
 sqlparse==0.3.0
 urllib3==1.25.7
+Whoosh==2.7.4

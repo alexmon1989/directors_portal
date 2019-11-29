@@ -6,8 +6,8 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-12">
-    <h1>{% if poster == request.user %}{% trans "My messages" %}{% else %}{% blocktrans with username=poster|forum_member_display_name %}{{ username }}'s posts{% endblocktrans %}{% endif %}</h1>
+  <div class="col-12 g-mt-30">
+    <h2>{% if poster == request.user %}{% trans "My messages" %}{% else %}{% blocktrans with username=poster|forum_member_display_name %}{{ username }}'s posts{% endblocktrans %}{% endif %}</h2>
   </div>
 </div>
 <div class="row">

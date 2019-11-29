@@ -37,75 +37,81 @@
     {% include '_partials/header.html' %}
     <!-- End Header -->
 
-    {% block header %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="{% url 'forum:index' %}">
-                {% block brand %}{{ MACHINA_FORUM_NAME|default:"My forum" }}{% endblock %}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                {% block header_collapse %}
-                    <form class="form-inline my-2 ml-3 my-lg-0" role="search" action="{% url 'forum_search:search' %}">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                               name="q">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
-                    </form>
-                    <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link"
-                           href="{% url 'forum_search:search' %}">{% trans "Advanced search" %}</a>
-                    </div>
-                {% endblock header_collapse %}
-            </div>
-        </nav>
-    {% endblock header %}
+    {% block header %}{% endblock header %}
 
     {% block breadcrumb %}{% include "partials/breadcrumb.html" %}{% endblock breadcrumb %}
 
-    <div class="container g-pt-20 g-pb-50" id="main_container">
+    <div class="container g-pt-20 g-pb-50 forum" id="main_container">
         <div class="row">
             <div class="col-12">
+                <div class="card g-mb-10">
+                    <div class="card-header g-bg-black-opacity-0_7 g-color-white d-md-flex justify-content-between">
+                        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                            {% if not request.user.is_anonymous %}
+                                <a href="{% url 'forum_member:user_subscriptions' %}" class="d-inline-block ml-3 g-color-white"><i
+                                        class="fas fa-bookmark">&nbsp;</i>{% trans "Subscriptions" %}</a>
+                                <a href="{% url 'forum_member:user_posts' request.user.id %}" class="d-inline-block ml-3 g-color-white"><i
+                                        class="fas fa-comments">&nbsp;</i>{% trans "View my posts" %}</a>
+                            {% endif %}
+                            {% get_permission 'can_access_moderation_queue' request.user as can_access_moderation_queue %}
+                            {% if can_access_moderation_queue %}
+                                <a href="{% url 'forum_moderation:queue' %}" class="d-inline-block ml-3 g-color-white"><i
+                                        class="fas fa-gavel">&nbsp;</i>{% trans "Moderation queue" %}</a>
+                            {% endif %}
+                        </div>
 
-                <div class="float-right controls-link-wrapper">
-                    {% spaceless %}
-                        {% if not request.user.is_anonymous %}
-                            <a href="{% url 'forum_member:user_subscriptions' %}" class="d-inline-block ml-3"><i
-                                    class="fas fa-bookmark">&nbsp;</i>{% trans "Subscriptions" %}</a>
-                            <a href="{% url 'forum_member:user_posts' request.user.id %}" class="d-inline-block ml-3"><i
-                                    class="fas fa-comments">&nbsp;</i>{% trans "View my posts" %}</a>
-                        {% endif %}
-                        {% get_permission 'can_access_moderation_queue' request.user as can_access_moderation_queue %}
-                        {% if can_access_moderation_queue %}
-                            <a href="{% url 'forum_moderation:queue' %}" class="d-inline-block ml-3"><i
-                                    class="fas fa-gavel">&nbsp;</i>{% trans "Moderation queue" %}</a>
-                        {% endif %}
-                    {% endspaceless %}
+                        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                            <form class="form-inline my-2 ml-3 my-lg-0" role="search" action="{% url 'forum_search:search' %}">
+                                <input class="form-control mr-sm-2" type="search" placeholder="{% trans "Search" %}" aria-label="{% trans "Search" %}"
+                                       name="q">
+                            </form>
+                            <a class="ml-3 g-color-white" href="{% url 'forum_search:search' %}">{% trans "Advanced search" %}</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <br/>
-                {% block messages %}{% include "partials/messages.html" %}{% endblock messages %}
+
+        {% if messages %}
+            <div class="row">
+                <div class="col-12">
+                    <br/>
+                    {% block messages %}{% include "partials/messages.html" %}{% endblock messages %}
+                </div>
             </div>
-        </div>
+        {% endif %}
+
         {% block content %}
         {% endblock content %}
     </div>
+
+    <!-- Footer -->
+    {% include '_partials/footer.html' %}
+    <!-- End Footer -->
+
+    <!-- Copyright Footer -->
+    {% include '_partials/footer_copyright.html' %}
+    <!-- End Copyright Footer -->
+
+    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
+        "bottom": 15,
+        "right": 15
+      }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
+        <i class="hs-icon hs-icon-arrow-top"></i>
+    </a>
 </main>
 {% endblock body %}
 
 {% block js %}
     {{ block.super }}
-    <script src="{% static 'js/machina.packages.min.js' %}" type="text/javascript" charset="utf-8"></script>
-    <script src="{% static 'js/machina.min.js' %}" type="text/javascript" charset="utf-8"></script>
 
     <!-- JS Global Compulsory -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/jquery-migrate/jquery-migrate.min.js' %}"></script>
     <script src="{% static 'vendor/popper.js/popper.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'js/machina.min.js' %}" type="text/javascript" charset="utf-8"></script>
 
     <script src="{% static 'vendor/bootstrap/offcanvas.js' %}"></script>
 

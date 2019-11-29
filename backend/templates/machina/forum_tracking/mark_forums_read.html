@@ -6,9 +6,9 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-12">
+  <div class="col-12 g-mt-30">
     <div class="card topic-delete">
-      <div class="card-header"><h3 class="m-0 card-title h5">{% trans "Mark forums read" %}</h3></div>
+      <div class="card-header g-bg-blue g-brd-transparent g-color-white g-font-size-16 rounded-0 mb-0"><h3 class="m-0 card-title h5">{% trans "Mark forums read" %}</h3></div>
       <div class="card-body">
         <div class="mb-3 warning-message">{% trans "Are you sure you want to mark forums read?" %}</div>
         <form action="" method="post">{% csrf_token %}

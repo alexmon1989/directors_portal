@@ -22,13 +22,20 @@
                         </li>
                     {% endfor %}
                         <li class="list-inline-item g-color-primary">
-                            <span>{{ forum.name }}</span>
+                            <a class="u-link-v5 g-color-main" href="{% url 'forum:forum' forum.slug forum.id %}">{{ forum.name }}</a>
                         </li>
                     {% endif %}
 
                     {% if topic %}
                         <li class="list-inline-item g-color-primary">
+                            <i class="g-color-gray-light-v2 g-mr-5">/</i>
                             <span>{{ topic.subject }}</span>
+                        </li>
+                    {% endif %}
+
+                    {% if request.resolver_match.url_name == 'index' %}
+                        <li class="list-inline-item g-color-primary">
+                            <span>Все форумы</span>
                         </li>
                     {% endif %}
                 </ul>

@@ -63,6 +63,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
 
+    'debug_toolbar',
+
     'apps.home',
     'apps.news.apps.NewsConfig',
     'apps.core_app',
@@ -77,6 +79,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -177,11 +180,19 @@ CACHES = {
     },
 }
 
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+#     },
+# }
+
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, '../whoosh_index'),
     },
 }
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 SITE_ID = 1
 
@@ -254,3 +265,13 @@ CKEDITOR_CONFIGS = {
 }
 
 AUTH_USER_MODEL = 'core_app.User'
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
+
+MACHINA_USER_DISPLAY_NAME_METHOD = 'get_name'
+MACHINA_PROFILE_AVATAR_WIDTH = 300
+MACHINA_PROFILE_AVATAR_HEIGHT = 500
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

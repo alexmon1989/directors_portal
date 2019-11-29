@@ -1,4 +1,5 @@
 /media
 /static
 /database
+/whoosh_index
 .env

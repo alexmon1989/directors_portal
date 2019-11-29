@@ -1,0 +1,755 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-25 13:15+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\apps\core_app\admin.py:13
+msgid "Personal info"
+msgstr ""
+
+#: .\apps\core_app\admin.py:14
+msgid "Permissions"
+msgstr ""
+
+#: .\apps\core_app\admin.py:16
+msgid "Important dates"
+msgstr ""
+
+#: .\apps\core_app\models.py:15
+msgid "staff status"
+msgstr ""
+
+#: .\apps\core_app\models.py:17
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: .\apps\core_app\models.py:20
+msgid "active"
+msgstr ""
+
+#: .\apps\core_app\models.py:23
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: .\apps\core_app\models.py:31 .\apps\core_app\models.py:52
+msgid "user"
+msgstr ""
+
+#: .\apps\core_app\models.py:32 .\apps\core_app\models.py:53
+msgid "users"
+msgstr ""
+
+#: .\templates\machina\board_base.html:6
+msgid "Форум"
+msgstr ""
+
+#: .\templates\machina\board_base.html:52
+msgid "Subscriptions"
+msgstr ""
+
+#: .\templates\machina\board_base.html:54
+msgid "View my posts"
+msgstr "Мои сообщения"
+
+#: .\templates\machina\board_base.html:59
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:5
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:10
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:5
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:10
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:33
+msgid "Moderation queue"
+msgstr ""
+
+#: .\templates\machina\board_base.html:68
+msgid "Advanced search"
+msgstr "Продвинутый поиск"
+
+#: .\templates\machina\forum\forum_detail.html:22
+msgid "Mark subforums read"
+msgstr ""
+
+#: .\templates\machina\forum\forum_detail.html:34
+#: .\templates\machina\forum\forum_detail.html:59
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:19
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:67
+msgid "New topic"
+msgstr ""
+
+#: .\templates\machina\forum\forum_detail.html:40
+#: .\templates\machina\forum\forum_detail.html:65
+#: .\templates\machina\forum_tracking\mark_topics_read.html:5
+#: .\templates\machina\forum_tracking\mark_topics_read.html:11
+msgid "Mark topics read"
+msgstr ""
+
+#: .\templates\machina\forum\forum_detail.html:48
+msgid "Announcements"
+msgstr ""
+
+#: .\templates\machina\forum\forum_detail.html:52
+#: .\templates\machina\forum\forum_list.html:22
+#: .\templates\machina\forum\forum_list.html:40
+#: .\templates\machina\forum\forum_list.html:231
+msgid "Topics"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:23
+#: .\templates\machina\forum\forum_list.html:41
+#: .\templates\machina\forum\forum_list.html:232
+msgid "Posts"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:24
+#: .\templates\machina\forum\forum_list.html:42
+#: .\templates\machina\forum\forum_list.html:233
+#: .\templates\machina\forum_conversation\topic_list.html:15
+msgid "Last post"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:38
+#: .\templates\machina\forum\forum_list.html:229
+msgid "Forums"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:77
+#: .\templates\machina\forum\forum_list.html:161
+msgid "RSS feed"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:84
+#: .\templates\machina\forum\forum_list.html:168
+#, python-format
+msgid "By: <a class=\"g-color-blue\" href=\"%(poster_url)s\">%(username)s</a>"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:88
+#: .\templates\machina\forum\forum_list.html:172
+#: .\templates\machina\forum_conversation\topic_list.html:58
+#, python-format
+msgid "By: %(poster_username)s"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:98
+#: .\templates\machina\forum\forum_list.html:182
+msgid "No posts"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:119
+#: .\templates\machina\forum\forum_list.html:203
+msgid "Total redirects:"
+msgstr "Перешло по ссылке:"
+
+#: .\templates\machina\forum\forum_list.html:211
+#: .\templates\machina\forum\forum_list.html:218
+msgid "Subforums:"
+msgstr ""
+
+#: .\templates\machina\forum\forum_list.html:238
+msgid "No forums."
+msgstr ""
+
+#: .\templates\machina\forum\index.html:6
+msgid "Index"
+msgstr ""
+
+#: .\templates\machina\forum\index.html:14
+#: .\templates\machina\forum_tracking\mark_forums_read.html:5
+#: .\templates\machina\forum_tracking\mark_forums_read.html:11
+msgid "Mark forums read"
+msgstr ""
+
+#: .\templates\machina\forum\index.html:18
+#: .\templates\machina\forum_tracking\unread_topic_list.html:4
+#: .\templates\machina\forum_tracking\unread_topic_list.html:8
+msgid "View unread topics"
+msgstr ""
+
+#: .\templates\machina\forum\index.html:26
+#: .\templates\machina\forum_member\forum_profile_detail.html:34
+msgid "Statistics"
+msgstr ""
+
+#: .\templates\machina\forum\index.html:27
+msgid "Total posts:"
+msgstr ""
+
+#: .\templates\machina\forum\index.html:27
+msgid "Total topics:"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_attachments\attachment_formset.html:28
+#: .\templates\machina\forum_member\forum_profile_update.html:19
+#: .\templates\machina\partials\form_field.html:6
+msgid "(optional)"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_attachments\attachment_formset.html:41
+msgid "Add another file"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_attachments\attachments_detail.html:8
+#: .\templates\machina\forum_conversation\forum_attachments\attachments_preview.html:7
+#: .\templates\machina\forum_conversation\partials\post_form.html:22
+#: .\templates\machina\forum_conversation\partials\post_form.html:60
+#: .\templates\machina\forum_conversation\partials\topic_form.html:24
+msgid "Attachments"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_detail.html:17
+#: .\templates\machina\forum_conversation\forum_polls\poll_preview.html:13
+msgid "You may select <b>1</b> option"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_detail.html:21
+#: .\templates\machina\forum_conversation\forum_polls\poll_preview.html:17
+#, python-format
+msgid "You may select up to <b>%(max_options)s</b> options"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_detail.html:40
+msgid "Vote"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_detail.html:45
+msgid "Change your vote"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_option_formset.html:3
+msgid "Poll options"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_option_formset.html:26
+msgid "Add a poll option"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_option_formset.html:30
+msgid ""
+"<b>Note:</b>&nbsp;Deleting poll options of an existing poll will delete the "
+"associated votes."
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_preview.html:9
+#: .\templates\machina\forum_conversation\post_preview.html:10
+msgid "Preview:"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_results.html:19
+msgid "Total votes:"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_vote_form.html:35
+#: .\templates\machina\forum_conversation\partials\topic_form.html:100
+#: .\templates\machina\forum_conversation\post_create.html:28
+#: .\templates\machina\forum_conversation\post_update.html:27
+#: .\templates\machina\forum_member\forum_profile_update.html:35
+msgid "Submit"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\forum_polls\poll_vote_form.html:36
+msgid "View results"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\post_form.html:21
+#: .\templates\machina\forum_conversation\partials\topic_form.html:22
+msgid "Options"
+msgstr "Настройки"
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:15
+msgid "Post reply"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:18
+msgid "Subscribe"
+msgstr "Подписаться"
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:20
+msgid "Unsubscribe"
+msgstr "Отписаться"
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:26
+#: .\templates\machina\forum_moderation\topic_lock.html:5
+#: .\templates\machina\forum_moderation\topic_lock.html:12
+msgid "Lock topic"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:27
+#: .\templates\machina\forum_moderation\topic_unlock.html:5
+#: .\templates\machina\forum_moderation\topic_unlock.html:12
+msgid "Unlock topic"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:28
+#: .\templates\machina\forum_moderation\topic_delete.html:5
+#: .\templates\machina\forum_moderation\topic_delete.html:12
+msgid "Delete topic"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:29
+#: .\templates\machina\forum_moderation\topic_move.html:5
+#: .\templates\machina\forum_moderation\topic_move.html:12
+msgid "Move topic"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:31
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:38
+msgid "Change to sticky topic"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:32
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:35
+msgid "Change to announce"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:34
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:37
+msgid "Change to standard topic"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_form.html:23
+msgid "Poll"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\partials\topic_form.html:99
+#: .\templates\machina\forum_conversation\post_create.html:27
+#: .\templates\machina\forum_conversation\post_update.html:26
+msgid "Preview"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_create.html:6
+#: .\templates\machina\forum_conversation\post_create.html:21
+msgid "Post a reply"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_create.html:39
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:133
+msgid "Topic review"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_create.html:51
+#: .\templates\machina\forum_conversation\topic_detail.html:53
+#: .\templates\machina\forum_conversation\topic_list.html:34
+#: .\templates\machina\forum_member\user_posts_list.html:50
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:86
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:145
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:51
+#: .\templates\machina\forum_search\search.html:83
+#, python-format
+msgid "By: <a href=\"%(poster_url)s\">%(username)s</a> on %(creation_date)s"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_create.html:55
+#: .\templates\machina\forum_conversation\topic_detail.html:57
+#: .\templates\machina\forum_conversation\topic_list.html:38
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:90
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:149
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:55
+#: .\templates\machina\forum_search\search.html:87
+#, python-format
+msgid "By: %(poster_username)s on %(creation_date)s"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_delete.html:5
+#: .\templates\machina\forum_conversation\post_delete.html:12
+msgid "Delete post"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_delete.html:15
+msgid "Are you sure you want to delete this post?"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_delete.html:18
+#: .\templates\machina\forum_member\topic_subscribe.html:18
+#: .\templates\machina\forum_member\topic_unsubscribe.html:18
+#: .\templates\machina\forum_moderation\moderation_queue\post_approve.html:18
+#: .\templates\machina\forum_moderation\moderation_queue\post_disapprove.html:18
+#: .\templates\machina\forum_moderation\topic_delete.html:18
+#: .\templates\machina\forum_moderation\topic_lock.html:18
+#: .\templates\machina\forum_moderation\topic_move.html:23
+#: .\templates\machina\forum_moderation\topic_unlock.html:18
+#: .\templates\machina\forum_moderation\topic_update_type.html:18
+#: .\templates\machina\forum_tracking\mark_forums_read.html:16
+#: .\templates\machina\forum_tracking\mark_topics_read.html:16
+msgid "Yes, I'm sure"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_delete.html:19
+#: .\templates\machina\forum_member\topic_subscribe.html:19
+#: .\templates\machina\forum_member\topic_unsubscribe.html:19
+#: .\templates\machina\forum_moderation\moderation_queue\post_approve.html:19
+#: .\templates\machina\forum_moderation\moderation_queue\post_disapprove.html:19
+#: .\templates\machina\forum_moderation\topic_delete.html:19
+#: .\templates\machina\forum_moderation\topic_lock.html:19
+#: .\templates\machina\forum_moderation\topic_move.html:24
+#: .\templates\machina\forum_moderation\topic_unlock.html:19
+#: .\templates\machina\forum_moderation\topic_update_type.html:19
+#: .\templates\machina\forum_tracking\mark_forums_read.html:17
+#: .\templates\machina\forum_tracking\mark_topics_read.html:17
+msgid "No, take me back"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\post_update.html:5
+#: .\templates\machina\forum_conversation\post_update.html:20
+#: .\templates\machina\forum_conversation\topic_update.html:5
+#: .\templates\machina\forum_conversation\topic_update.html:23
+msgid "Edit post"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_create.html:5
+#: .\templates\machina\forum_conversation\topic_create.html:23
+msgid "Post a new topic"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_detail.html:34
+msgid "Edit"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_detail.html:38
+msgid "Delete"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_detail.html:76
+msgid "Last edited by:"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_detail.html:76
+msgid "Updated"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_detail.html:76
+msgid "on"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_detail.html:76
+#, python-format
+msgid "edited %(counter)s time in total."
+msgid_plural "edited %(counter)s times in total."
+msgstr[0] "Отредактировано %(counter)s раз."
+msgstr[1] "Отредактировано %(counter)s раз."
+
+#: .\templates\machina\forum_conversation\topic_detail.html:81
+msgid "Reason:"
+msgstr "Причина:"
+
+#: .\templates\machina\forum_conversation\topic_detail.html:95
+#: .\templates\machina\forum_member\user_posts_list.html:67
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:117
+msgid "Posts:"
+msgstr "Сообщений:"
+
+#: .\templates\machina\forum_conversation\topic_detail.html:98
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:120
+msgid "Anonymous user"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_list.html:13
+msgid "Replies"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_list.html:14
+msgid "Views"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_list.html:29
+msgid "This topic is locked"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_list.html:54
+#, python-format
+msgid "By: <a href=\"%(poster_url)s\">%(username)s</a>"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_list.html:74
+msgid "There are no topics in this forum."
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_pages_inline_list.html:5
+msgid "Go to the page:"
+msgstr ""
+
+#: .\templates\machina\forum_feeds\topics_description.html:6
+msgid "Posted by"
+msgstr ""
+
+#: .\templates\machina\forum_member\forum_profile_detail.html:5
+#: .\templates\machina\forum_member\forum_profile_detail.html:10
+#, python-format
+msgid "%(username)s profile"
+msgstr ""
+
+#: .\templates\machina\forum_member\forum_profile_detail.html:26
+msgid "Edit profile"
+msgstr ""
+
+#: .\templates\machina\forum_member\forum_profile_detail.html:40
+#, python-format
+msgid ""
+"<h2><strong>%(counter)s</strong></h2>\n"
+"                      <p><small>Post</small></p>"
+msgid_plural ""
+"<h2><strong>%(counter)s</strong></h2>\n"
+"                      <p class=\"mb-1\"><small>Posts</small></p>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\machina\forum_member\forum_profile_detail.html:45
+#, python-format
+msgid ""
+"<h2><strong>%(counter)s</strong></h2>\n"
+"                      <p><small>Topic</small></p>"
+msgid_plural ""
+"<h2><strong>%(counter)s</strong></h2>\n"
+"                      <p class=\"mb-1\"><small>Topics</small></p>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\machina\forum_member\forum_profile_detail.html:60
+msgid "Recent posts"
+msgstr ""
+
+#: .\templates\machina\forum_member\forum_profile_detail.html:60
+msgid "View all"
+msgstr ""
+
+#: .\templates\machina\forum_member\forum_profile_detail.html:70
+#, python-format
+msgid "On %(creation_date)s"
+msgstr "В %(creation_date)s"
+
+#: .\templates\machina\forum_member\forum_profile_update.html:4
+#: .\templates\machina\forum_member\forum_profile_update.html:11
+msgid "Edit forum profile"
+msgstr ""
+
+#: .\templates\machina\forum_member\subscription_topic_list.html:4
+#: .\templates\machina\forum_member\subscription_topic_list.html:10
+msgid "Topics that you are subscribed to"
+msgstr ""
+
+#: .\templates\machina\forum_member\subscription_topic_list.html:17
+#, python-format
+msgid "%(counter)s topic found"
+msgid_plural "%(counter)s topics found"
+msgstr[0] "Найдено тем: %(counter)s"
+msgstr[1] "Найдено тем: %(counter)s"
+
+#: .\templates\machina\forum_member\subscription_topic_list.html:31
+msgid "Not topics found."
+msgstr ""
+
+#: .\templates\machina\forum_member\topic_subscribe.html:5
+#: .\templates\machina\forum_member\topic_subscribe.html:12
+msgid "Subscribe to topic"
+msgstr ""
+
+#: .\templates\machina\forum_member\topic_subscribe.html:15
+msgid "Would you like to subscribe to this topic?"
+msgstr ""
+
+#: .\templates\machina\forum_member\topic_unsubscribe.html:5
+#: .\templates\machina\forum_member\topic_unsubscribe.html:12
+msgid "Unsubscribe from topic"
+msgstr ""
+
+#: .\templates\machina\forum_member\topic_unsubscribe.html:15
+msgid "Would you like to unsubscribe from this topic?"
+msgstr ""
+
+#: .\templates\machina\forum_member\user_posts_list.html:5
+#: .\templates\machina\forum_member\user_posts_list.html:10
+msgid "My messages"
+msgstr ""
+
+#: .\templates\machina\forum_member\user_posts_list.html:5
+#: .\templates\machina\forum_member\user_posts_list.html:10
+#, python-format
+msgid "%(username)s's posts"
+msgstr ""
+
+#: .\templates\machina\forum_member\user_posts_list.html:17
+#, python-format
+msgid "%(counter)s post found"
+msgid_plural "%(counter)s posts found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\machina\forum_member\user_posts_list.html:24
+msgid "No posts found"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:15
+msgid "Disapprove"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:16
+msgid "Approve"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:19
+msgid "New post"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:32
+msgid "<b>1</b> option may be selected"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:36
+#, python-format
+msgid "Up to <b>%(max_options)s</b> options may be selected"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:17
+#, python-format
+msgid "%(topic_length)s posts found"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:35
+msgid "Topic"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:36
+msgid "Forum"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\list.html:79
+msgid "No posts awaiting approval."
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\post_approve.html:5
+#: .\templates\machina\forum_moderation\moderation_queue\post_approve.html:12
+msgid "Approve post"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\post_approve.html:15
+msgid "Are you sure you want to approve this post?"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\post_disapprove.html:5
+#: .\templates\machina\forum_moderation\moderation_queue\post_disapprove.html:12
+msgid "Disapprove post"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\moderation_queue\post_disapprove.html:15
+msgid ""
+"Are you sure you want to disapprove this post? This post will be deleted."
+msgstr ""
+
+#: .\templates\machina\forum_moderation\topic_delete.html:15
+msgid "Are you sure you want to delete this topic?"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\topic_lock.html:15
+msgid "Are you sure you want to lock this topic?"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\topic_unlock.html:15
+msgid "Are you sure you want to unlock this topic?"
+msgstr ""
+
+#: .\templates\machina\forum_moderation\topic_update_type.html:5
+#: .\templates\machina\forum_moderation\topic_update_type.html:12
+msgid "Change topic type"
+msgstr ""
+
+#: .\templates\machina\forum_search\search.html:5
+#: .\templates\machina\forum_search\search.html:11
+#: .\templates\machina\forum_search\search.html:32
+#: .\templates\machina\forum_search\search.html:42
+msgid "Search"
+msgstr "Поиск"
+
+#: .\templates\machina\forum_search\search.html:18
+msgid "Search forums"
+msgstr ""
+
+#: .\templates\machina\forum_search\search.html:44
+msgid "New search"
+msgstr ""
+
+#: .\templates\machina\forum_search\search.html:50
+#, python-format
+msgid "Your search has returned <b>%(number_of_results)s</b> result"
+msgid_plural "Your search has returned <b>%(number_of_results)s</b> results"
+msgstr[0] "Ваш поисковый запрос вернул <b>%(number_of_results)s</b> результат"
+msgstr[1] "Ваш поисковый запрос вернул <b>%(number_of_results)s</b> результатов"
+
+#: .\templates\machina\forum_search\search.html:70
+msgid "Results"
+msgstr ""
+
+#: .\templates\machina\forum_search\search.html:101
+msgid "No results."
+msgstr ""
+
+#: .\templates\machina\forum_tracking\mark_forums_read.html:13
+msgid "Are you sure you want to mark forums read?"
+msgstr ""
+
+#: .\templates\machina\forum_tracking\mark_topics_read.html:13
+msgid "Are you sure you want to mark topics read?"
+msgstr ""
+
+#: .\templates\machina\forum_tracking\unread_topic_list.html:13
+#, python-format
+msgid ""
+"\n"
+"      %(topic_length)s unread topic found"
+msgid_plural ""
+"%(topic_length)s unread topics found\n"
+"      "
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\machina\forum_tracking\unread_topic_list.html:25
+msgid "There are no unread topics."
+msgstr ""
+
+#: .\templates\machina\partials\breadcrumb.html:7
+#: .\templates\machina\partials\breadcrumb.html:13
+msgid "Forum index"
+msgstr "Форум"
+
+msgid "Search for keywords"
+msgstr "Искать по ключевому слову"
+
+msgid "Search only in topic subjects"
+msgstr "Искать только в названиях тем"
+
+msgid "Search for poster"
+msgstr "Искать по имени автора"
+
+msgid "Search in specific forums"
+msgstr "Искать в определённых форумах"
+
+msgid "Select the forums you wish to search in."
+msgstr "Выберите форумы для поиска в них"
+
+msgid "Enter a user name to limit the search to a specific user."
+msgstr "Введите имя пользователя"
+
+msgid "Post topic as"
+msgstr "Тип темы"
+
+msgid "Sticky"
+msgstr "Прикреплённая тема"
+
+msgid "Announce"
+msgstr "Объявление"

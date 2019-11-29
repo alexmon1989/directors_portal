@@ -5,21 +5,22 @@
 {% block sub_title %}{% trans "Subscribe to topic" %}{% endblock sub_title %}
 
 {% block content %}
-<div class="row">
-  <div class="col-12">
-    <div class="card post-delete">
-      <div class="card-header">
-        <h3 class="m-0 card-title h5">{% trans "Subscribe to topic" %}</h3>
-      </div>
-      <div class="card-body">
-        <div class="mb-3 warning-message">{% trans "Would you like to subscribe to this topic?" %}</div>
-        <form action="" method="post">{% csrf_token %}
-          <input type="hidden" name="post" value="yes" />
-          <button role="submit" class="btn btn-warning">{% trans "Yes, I'm sure" %}</button>
-          <a href="{% url 'forum_conversation:topic' topic.forum.slug topic.forum.pk topic.slug topic.pk %}" class="btn btn-secondary">{% trans "No, take me back" %}</a>
-        </form>
-      </div>
+    <div class="row">
+        <div class="col-12 g-mt-30">
+            <div class="card post-delete">
+                <div class="card-header g-bg-blue g-brd-transparent g-color-white g-font-size-16 rounded-0 mb-0">
+                    <h3 class="m-0 card-title h5">{% trans "Subscribe to topic" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3 warning-message">{% trans "Would you like to subscribe to this topic?" %}</div>
+                    <form action="" method="post">{% csrf_token %}
+                        <input type="hidden" name="post" value="yes"/>
+                        <button role="submit" class="btn u-btn-indigo">{% trans "Yes, I'm sure" %}</button>
+                        <a href="{% url 'forum_conversation:topic' topic.forum.slug topic.forum.pk topic.slug topic.pk %}"
+                           class="btn u-btn-bluegray">{% trans "No, take me back" %}</a>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 {% endblock content %}
