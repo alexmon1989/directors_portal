@@ -9,7 +9,10 @@ from .managers import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, null=True)
     first_name = models.CharField('Имя', max_length=255)
+    middle_name = models.CharField('Отчество', max_length=255, default='')
     last_name = models.CharField('Фамилия', max_length=255)
+    organization = models.CharField('Образовательная организация', max_length=255, default='', blank=True)
+    phone = models.CharField('Контактный телефон', max_length=255, default='', null=True, blank=True)
     date_joined = models.DateTimeField('Профиль создан', auto_now_add=True)
     is_staff = models.BooleanField(
         _('staff status'),

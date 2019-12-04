@@ -1417,3 +1417,7 @@ input[type="radio"]:checked + * .g-overlay-primary-0_9--checked::after,
     opacity: 0;
   }
 }
+
+.u-has-error-v1 .form-control, .u-has-error-v1 [class*="input-group-"], .u-has-error-v1 [class*="u-select"] {
+  background-color: #fff0f0 !important;
+}

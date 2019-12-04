@@ -1,18 +1,20 @@
 {% load i18n %}
 {% load widget_tweaks %}
+{% load my_auth_extras %}
 
 <div id="div_id_{{ field.html_name }}" class="form-group{% if field.errors %} u-has-error-v1{% endif %}">
     <div class="controls">
         {% if field.label %}<label class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" for="{{ field.auto_id }}">
             {{ field.label }}{% if not field.field.required %}
                 <span class="text-muted">{% trans "(optional)" %}</span>{% endif %}</label>{% endif %}
-        {{ field|add_class:field_css_class }}
+        {% get_field_placeholder_attr field.label as field_placeholder_attr %}
+        {{ field|add_class:'form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v2 g-brd-primary--hover rounded g-py-15 g-px-15'|append_attr:field_placeholder_attr }}
         {% if field.help_text %}
-            <p class="help-block text-muted">
+            <p class="help-block text-muted g-mb-0">
                 <small>{{ field.help_text }}</small>
             </p>{% endif %}
         {% for error in field.errors %}
-            <span class="form-control-feedback">{{ error }}</span><br>
+            <small class="form-control-feedback">{{ error }}</small><br>
         {% endfor %}
     </div>
 </div>

@@ -18,6 +18,7 @@ from django.urls import include, path
 from machina import urls as machina_urls
 from django.conf import settings
 from django.conf.urls.static import static
+from apps.my_auth.views import MyLoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,7 +26,9 @@ urlpatterns = [
     path('news/', include('apps.news.urls')),
     path('forum/', include(machina_urls)),
     path('messages/', include('django_messages.urls')),
+    path('accounts/login/', MyLoginView.as_view(), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('apps.my_auth.urls')),
     path('accounts/', include('apps.my_auth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
