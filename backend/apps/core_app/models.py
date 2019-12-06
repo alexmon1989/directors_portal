@@ -26,6 +26,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             'Designates whether this user should be treated as active. ''Unselect this instead of deleting accounts.'
         ),
     )
+    last_activity = models.DateTimeField('Дата последней активности', null=True, blank=True)
 
     USERNAME_FIELD = 'email'
     objects = UserManager()
@@ -41,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.get_full_name()
 
     def get_name(self):
-        return f"{self.last_name} {self.first_name}"
+        return f"{self.last_name} {self.first_name} {self.middle_name}"
 
     def __str__(self):
         return self.email

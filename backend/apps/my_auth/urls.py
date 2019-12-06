@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SignUpView, SignUpDone, PasswordChangeView, PasswordChangeDone, activate
+from .views import SignUpView, SignUpDone, PasswordChangeView, PasswordChangeDone, activate, my_profile
 
 urlpatterns = [
     path('sign-up/', SignUpView.as_view(), name="sign_up"),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('password-change/', PasswordChangeView.as_view(), name="password_change"),
     path('password-change-done/', PasswordChangeDone.as_view(), name="password_change_done"),
     path('activate/<str:uidb64>/<str:token>', activate, name='activate'),
+    path('me/', my_profile, name='my_profile'),
 ]

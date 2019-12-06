@@ -3,15 +3,17 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.models import Group
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from machina.apps.forum_member.models import ForumProfile
 from .tokens import account_activation_token
 from .forms import SignUpForm
 
@@ -109,3 +111,9 @@ def activate(request, uidb64, token):
         return redirect('home:index')
     else:
         return HttpResponse('invalid token')
+
+
+@login_required
+def my_profile(request):
+    profile = ForumProfile.objects.filter(user=request.user).first()
+    return render(request, 'my_auth/my_profile/index.html', {'profile': profile})
