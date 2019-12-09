@@ -36,35 +36,6 @@
                     <img class="img-fluid" src="//via.placeholder.com/300x300?text=No+Photo" />
                 {% endif %}
             </div>
-
-            <!-- Sidebar Navigation -->
-            <div class="list-group list-group-border-0 g-mb-40">
-                <a href="#"
-                   class="list-group-item list-group-item-action justify-content-between active">
-                    <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Информация</span>
-                </a>
-
-                <a href="#"
-                   class="list-group-item list-group-item-action justify-content-between">
-                    <span><i class="icon-envelope g-pos-rel g-top-1 g-mr-8"></i> Сообщения</span>
-                </a>
-
-                <a href="#"
-                   class="list-group-item list-group-item-action justify-content-between">
-                    <span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> Пользователи Портала</span>
-                </a>
-
-                <a href="#"
-                   class="list-group-item list-group-item-action justify-content-between">
-                    <span><i class="icon-disc g-pos-rel g-top-1 g-mr-8"></i> Моё файловое хранилище</span>
-                </a>
-
-                <a href="#"
-                   class="list-group-item list-group-item-action justify-content-between">
-                    <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Настройки</span>
-                </a>
-            </div>
-            <!-- End Sidebar Navigation -->
         </div>
 
         <div class="col-lg-9">
@@ -72,15 +43,15 @@
                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">ФИО</strong>
-                        <span class="align-top g-font-weight-600 g-font-size-16">{{ request.user.get_name }}</span>
+                        <span class="align-top g-font-weight-600 g-font-size-16">{{ profile.user.get_name }}</span>
                     </div>
                 </li>
 
-                {% if request.user.organization %}
+                {% if profile.user.organization %}
                    <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                         <div class="g-pr-10">
                             <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Образовательная организация</strong>
-                            <span class="align-top">{{ request.user.organization }}</span>
+                            <span class="align-top">{{ profile.user.organization }}</span>
                         </div>
                     </li>
                 {% endif %}
@@ -88,7 +59,7 @@
                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Категория</strong>
-                        <span class="align-top">{% if request.user.is_staff or request.user.is_superuser %}Администратор{% else %}Пользователь{% endif %}</span>
+                        <span class="align-top">{% if profile.user.is_staff or profile.user.is_superuser %}Администратор{% else %}Пользователь{% endif %}</span>
                     </div>
                 </li>
 
@@ -96,7 +67,7 @@
                     <div class="g-pr-10">
                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Статус</strong>
                         <span class="align-top g-font-weight-600">
-                            {% if request.user.is_online %}
+                            {% if profile.user.is_online %}
                                 <span class="text-success">Online</span>
                             {% else %}
                                 <span class="text-danger">Offline</span>
@@ -108,15 +79,15 @@
                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Дата регистрации</strong>
-                        <span class="align-top">{{ request.user.date_joined }}</span>
+                        <span class="align-top">{{ profile.user.date_joined }}</span>
                     </div>
                 </li>
 
-                {% if not request.user.is_online %}
+                {% if not profile.user.is_online %}
                     <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                         <div class="g-pr-10">
                             <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Дата последнего посещения</strong>
-                            <span class="align-top">{{ request.user.last_activity }}</span>
+                            <span class="align-top">{{ profile.user.last_activity }}</span>
                         </div>
                     </li>
                 {% endif %}
@@ -124,15 +95,15 @@
                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">E-Mail</strong>
-                        <span class="align-top">{{ request.user.email }}</span>
+                        <span class="align-top">{{ profile.user.email }}</span>
                     </div>
                 </li>
 
-                {% if request.user.phone %}
+                {% if profile.user.phone %}
                     <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                         <div class="g-pr-10">
                             <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Контактный телефон</strong>
-                            <span class="align-top">{{ request.user.phone }}</span>
+                            <span class="align-top">{{ profile.user.phone }}</span>
                         </div>
                     </li>
                 {% endif %}
@@ -144,7 +115,7 @@
                     </div>
                 </li>
 
-                {% if request.user.birthdate %}
+                {% if profile.user.birthdate %}
                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Дата рождения</strong>

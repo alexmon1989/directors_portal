@@ -1,11 +1,16 @@
 from django.utils import timezone
-
-from apps.core_app.models import User
+from django.contrib.auth import get_user_model
 
 
 class UpdateLastActivityMiddleware(object):
-    def process_request(self, request):
-        assert hasattr(request,
-                       'user'), 'The UpdateLastActivityMiddleware requires authentication middleware to be installed.'
-        if request.user.is_authenticated():
-            User.objects.filter(user__id=request.user.id).update(last_activity=timezone.now())
+    """Обновляет при каждом запросе поле last_activity модели User."""
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if request.user.is_authenticated:
+            user = get_user_model().objects.select_for_update().get(pk=request.user.id)
+            user.last_activity = timezone.now()
+            user.save()
+        response = self.get_response(request)
+        return response

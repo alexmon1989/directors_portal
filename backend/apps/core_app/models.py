@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 from .managers import UserManager
 
@@ -43,6 +44,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_name(self):
         return f"{self.last_name} {self.first_name} {self.middle_name}"
+
+    def is_online(self):
+        """Возвращает True, если последняя активность пользователя была менее чем 15 минут назад."""
+        if self.last_activity:
+            now = timezone.now()
+            then = self.last_activity
+            tdelta = now - then
+            minutes = tdelta.total_seconds() / 60
+            return minutes < 15
+        return False
 
     def __str__(self):
         return self.email

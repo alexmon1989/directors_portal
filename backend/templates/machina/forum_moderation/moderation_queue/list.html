@@ -47,7 +47,7 @@
                   <div>
                     <div class="post-created">
                       {% if post.poster %}
-                      {% url 'forum_member:profile' post.poster_id as poster_url %}
+                      {% url 'profile_details' post.poster_id as poster_url %}
                       {% blocktrans trimmed with poster_url=poster_url username=post.poster|forum_member_display_name creation_date=post.created %}
                       By: <a href="{{ poster_url }}">{{ username }}</a> on {{ creation_date }}
                       {% endblocktrans %}

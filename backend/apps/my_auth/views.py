@@ -13,7 +13,12 @@ from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from django.conf import settings
 from machina.apps.forum_member.models import ForumProfile
+from machina.apps.forum_conversation.models import Post, Topic
+from machina.apps.forum.models import Forum
+from machina.conf import settings as machina_settings
+
 from .tokens import account_activation_token
 from .forms import SignUpForm
 
@@ -116,4 +121,67 @@ def activate(request, uidb64, token):
 @login_required
 def my_profile(request):
     profile = ForumProfile.objects.filter(user=request.user).first()
-    return render(request, 'my_auth/my_profile/index.html', {'profile': profile})
+    # Computes the number of topics added by the considered member
+    topics_count = (
+        Topic.objects.filter(approved=True, poster=request.user).count()
+    )
+
+    # Fetches the recent posts added by the considered user
+    forums = request.forum_permission_handler.get_readable_forums(
+        Forum.objects.all(), request.user,
+    )
+    recent_posts = (
+        Post.approved_objects
+            .select_related('topic', 'topic__forum')
+            .filter(topic__forum__in=forums, poster=request.user)
+            .order_by('-created')
+    )
+    recent_posts = recent_posts[:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
+
+    request.user.refresh_from_db()
+    return render(
+        request,
+        'my_auth/my_profile/index.html',
+        {
+            'profile': profile,
+            'topics_count': topics_count,
+            'recent_posts': recent_posts,
+        }
+    )
+
+
+@login_required
+def profile_details(request, user_id):
+    """Отображает страницу с данными пользователя Портала."""
+    profile = ForumProfile.objects.filter(user=user_id).first()
+
+    # Если это профиль текущего пользователя, то производится переадресация его на страницу my_profile
+    if profile.user == request.user:
+        return redirect('my_profile')
+
+    # Computes the number of topics added by the considered member
+    topics_count = (
+        Topic.objects.filter(approved=True, poster=profile.user).count()
+    )
+
+    # Fetches the recent posts added by the considered user
+    forums = request.forum_permission_handler.get_readable_forums(
+        Forum.objects.all(), profile.user,
+    )
+    recent_posts = (
+        Post.approved_objects
+            .select_related('topic', 'topic__forum')
+            .filter(topic__forum__in=forums, poster=profile.user)
+            .order_by('-created')
+    )
+    recent_posts = recent_posts[:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
+
+    return render(
+        request,
+        'my_auth/profile/index.html',
+        {
+            'profile': profile,
+            'topics_count': topics_count,
+            'recent_posts': recent_posts,
+        }
+    )

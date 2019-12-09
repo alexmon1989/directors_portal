@@ -36,7 +36,7 @@
                                             <div>
                                                 <div class="topic-created">
                                                     {% if topic.poster %}
-                                                        {% url 'forum_member:profile' topic.poster_id as poster_url %}
+                                                        {% url 'profile_details' topic.poster_id as poster_url %}
                                                         {% blocktrans trimmed with poster_url=poster_url username=topic.poster|forum_member_display_name creation_date=topic.created %}
                                                             От: <a href="{{ poster_url }}" class="g-color-blue">{{ username }}</a> в
                                                             {{ creation_date }}
@@ -59,7 +59,7 @@
                             <div class="py-2 col-md-3 col-sm-3 d-none d-sm-block topic-last-post">
                                 {% with last_post=topic.last_post %}
                                     {% if last_post.poster %}
-                                        {% url 'forum_member:profile' last_post.poster_id as poster_url %}
+                                        {% url 'profile_details' last_post.poster_id as poster_url %}
                                         {% blocktrans trimmed with poster_url=poster_url username=last_post.poster|forum_member_display_name %}
                                             От: <a href="{{ poster_url }}" class="g-color-blue">{{ username }}</a>
                                         {% endblocktrans %}
