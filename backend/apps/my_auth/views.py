@@ -1,9 +1,9 @@
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import PasswordChangeForm
 from django.views.generic.edit import FormView
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
+from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -13,14 +13,14 @@ from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.core.mail import send_mail
-from django.conf import settings
 from machina.apps.forum_member.models import ForumProfile
 from machina.apps.forum_conversation.models import Post, Topic
 from machina.apps.forum.models import Forum
 from machina.conf import settings as machina_settings
+from machina.apps.forum_member.forms import ForumProfileForm
 
 from .tokens import account_activation_token
-from .forms import SignUpForm
+from .forms import SignUpForm, ProfileForm
 
 
 class MyLoginView(LoginView):
@@ -118,70 +118,113 @@ def activate(request, uidb64, token):
         return HttpResponse('invalid token')
 
 
-@login_required
-def my_profile(request):
-    profile = ForumProfile.objects.filter(user=request.user).first()
-    # Computes the number of topics added by the considered member
-    topics_count = (
-        Topic.objects.filter(approved=True, poster=request.user).count()
-    )
+class MyProfileInformationView(LoginRequiredMixin, TemplateView):
+    """Отображает страницу профиля авторизированного пользователя."""
+    template_name = 'my_auth/my_profile/index.html'
 
-    # Fetches the recent posts added by the considered user
-    forums = request.forum_permission_handler.get_readable_forums(
-        Forum.objects.all(), request.user,
-    )
-    recent_posts = (
-        Post.approved_objects
-            .select_related('topic', 'topic__forum')
-            .filter(topic__forum__in=forums, poster=request.user)
-            .order_by('-created')
-    )
-    recent_posts = recent_posts[:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    request.user.refresh_from_db()
-    return render(
-        request,
-        'my_auth/my_profile/index.html',
-        {
+        context['profile'] = ForumProfile.objects.filter(user=self.request.user).first()
+        # Computes the number of topics added by the considered member
+        context['topics_count'] = (
+            Topic.objects.filter(approved=True, poster=self.request.user).count()
+        )
+
+        # Fetches the recent posts added by the considered user
+        forums = self.request.forum_permission_handler.get_readable_forums(
+            Forum.objects.all(), self.request.user,
+        )
+        context['recent_posts'] = (
+            Post.approved_objects
+                .select_related('topic', 'topic__forum')
+                .filter(topic__forum__in=forums, poster=self.request.user)
+                .order_by('-created')
+        )
+        context['recent_posts'] = context['recent_posts'][:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
+
+        self.request.user.refresh_from_db()
+
+        return context
+
+
+class MyProfileSettingsView(LoginRequiredMixin, View):
+    """Отображает страницу с настройками учётной записи пользователя."""
+    template_name = 'my_auth/my_profile/settings/index.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, self.get_context())
+
+    def post(self, request, *args, **kwargs):
+        context = self.get_context()
+
+        context['action'] = self.request.POST.get('action')
+
+        if context['action'] == 'edit_profile':
+            # Редактирование данных профиля
+            context['profile_form'] = ProfileForm(data=request.POST, instance=request.user)
+            context['forum_profile_form'] = ForumProfileForm(
+                data=request.POST,
+                files=request.FILES,
+                instance=context['profile']
+            )
+            if context['profile_form'].is_valid() and context['forum_profile_form'].is_valid():
+                context['profile_form'].save()
+                context['forum_profile_form'].save()
+                return redirect('my_profile_settings')
+
+        elif context['action'] == 'edit_security':
+            # Редактирование пароля
+            context['password_change_form'] = PasswordChangeForm(data=request.POST, user=request.user)
+            if context['password_change_form'].is_valid():
+                context['password_change_form'].save()
+                login(request, request.user)
+                return redirect('my_profile_settings')
+
+        return render(request, self.template_name, context)
+
+    def get_context(self):
+        profile = ForumProfile.objects.filter(user=self.request.user).first()
+        return {
+            'action': self.request.GET.get('action', 'edit_profile'),
             'profile': profile,
-            'topics_count': topics_count,
-            'recent_posts': recent_posts,
+            'profile_form': ProfileForm(instance=self.request.user),
+            'forum_profile_form': ForumProfileForm(instance=profile),
+            'password_change_form': PasswordChangeForm(user=self.request.user),
         }
-    )
 
 
-@login_required
-def profile_details(request, user_id):
-    """Отображает страницу с данными пользователя Портала."""
-    profile = ForumProfile.objects.filter(user=user_id).first()
+class ProfileView(LoginRequiredMixin, DetailView):
+    """Отображает страницу профиля пользователя."""
+    template_name = 'my_auth/profile/index.html'
+    model = ForumProfile
+    context_object_name = 'profile'
 
-    # Если это профиль текущего пользователя, то производится переадресация его на страницу my_profile
-    if profile.user == request.user:
-        return redirect('my_profile')
+    def get_object(self, queryset=None):
+        return self.model.objects.filter(user=self.kwargs['pk']).first()
 
-    # Computes the number of topics added by the considered member
-    topics_count = (
-        Topic.objects.filter(approved=True, poster=profile.user).count()
-    )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    # Fetches the recent posts added by the considered user
-    forums = request.forum_permission_handler.get_readable_forums(
-        Forum.objects.all(), profile.user,
-    )
-    recent_posts = (
-        Post.approved_objects
-            .select_related('topic', 'topic__forum')
-            .filter(topic__forum__in=forums, poster=profile.user)
-            .order_by('-created')
-    )
-    recent_posts = recent_posts[:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
+        # Если это профиль текущего пользователя, то производится переадресация его на страницу my_profile
+        if self.object.user == self.request.user:
+            return redirect('my_profile')
 
-    return render(
-        request,
-        'my_auth/profile/index.html',
-        {
-            'profile': profile,
-            'topics_count': topics_count,
-            'recent_posts': recent_posts,
-        }
-    )
+        # Computes the number of topics added by the considered member
+        context['topics_count'] = (
+            Topic.objects.filter(approved=True, poster=self.object.user).count()
+        )
+
+        # Fetches the recent posts added by the considered user
+        forums = self.request.forum_permission_handler.get_readable_forums(
+            Forum.objects.all(), self.object.user,
+        )
+        context['recent_posts'] = (
+            Post.approved_objects
+                .select_related('topic', 'topic__forum')
+                .filter(topic__forum__in=forums, poster=self.object.user)
+                .order_by('-created')
+        )
+        context['recent_posts'] = context['recent_posts'][:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
+
+        return context

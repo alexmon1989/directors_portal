@@ -1421,3 +1421,7 @@ input[type="radio"]:checked + * .g-overlay-primary-0_9--checked::after,
 .u-has-error-v1 .form-control, .u-has-error-v1 [class*="input-group-"], .u-has-error-v1 [class*="u-select"] {
   background-color: #fff0f0 !important;
 }
+
+#div_id_avatar .col-sm-9 {
+  font-size: 0.85714rem
+}

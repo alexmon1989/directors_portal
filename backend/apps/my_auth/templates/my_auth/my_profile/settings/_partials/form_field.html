@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load widget_tweaks %}
+{% load my_auth_extras %}
+
+<div id="div_id_{{ field.html_name }}" class="form-group row g-mb-25{% if field.errors %} u-has-error-v1{% endif %}">
+    {% if field.label %}
+        <label class="col-sm-3 col-form-label g-color-gray-dark-v2 g-font-weight-700 text-sm-right g-mb-10"
+               for="{{ field.auto_id }}"
+        >{{ field.label }}{% if field.field.required %}&nbsp;<span class="text-muted g-color-red">*</span>{% endif %}</label>
+    {% endif %}
+    <div class="col-sm-9">
+            {% get_field_placeholder_attr field.label as field_placeholder_attr %}
+            {{ field|add_class:'form-control form-control-md rounded-0 g-py-13 pr-0 g-brd-primary--focus'|append_attr:field_placeholder_attr }}
+
+        {% if field.help_text %}
+            <p class="help-block text-muted g-mb-0"><small>{{ field.help_text }}</small></p>
+        {% endif %}
+        {% for error in field.errors %}
+            <small class="form-control-feedback">{{ error }}</small><br>
+        {% endfor %}
+    </div>
+</div>

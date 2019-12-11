@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block breadcrumbs %}
+    <section class="g-my-30">
+        <div class="container">
+            <ul class="u-list-inline">
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="/">Главная</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Учётные записи</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-color-primary">
+                    <span>Настройки моей учётной записи</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row g-mt-minus-30">
+        <div class="col-lg-3 g-mb-50 g-mb-0--lg">
+            <!-- User Image -->
+            <div class="profile-avatar">
+                {% if profile.avatar %}
+                    <img class="img-fluid" src="{{ profile.avatar.url }}"/>
+                {% else %}
+                    <img class="img-fluid" src="//via.placeholder.com/300x300?text=No+Photo"/>
+                {% endif %}
+            </div>
+            <!-- End User Image -->
+
+            <!-- Sidebar Navigation -->
+            {% include 'my_auth/my_profile/_partials/sidebar.html' %}
+            <!-- End Sidebar Navigation -->
+        </div>
+
+        <!-- Profle Content -->
+        <div class="col-lg-9">
+            <!-- Nav tabs -->
+            <ul class="nav nav-justified u-nav-v1-1 u-nav-primary g-brd-bottom--md g-brd-bottom-2 g-brd-primary g-mb-20"
+                role="tablist" data-target="nav-1-1-default-hor-left-underline" data-tabs-mobile-type="slide-up-down"
+                data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-primary g-mb-20">
+                <li class="nav-item">
+                    <a class="nav-link g-py-10{% if action == 'edit_profile' %} active{% endif %}"
+                       data-toggle="tab"
+                       href="#nav-1-1-default-hor-left-underline--1"
+                       role="tab">Редактирование данных</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link g-py-10 {% if action == 'edit_security' %} active{% endif %}"
+                       data-toggle="tab"
+                       href="#nav-1-1-default-hor-left-underline--2"
+                       role="tab">Безопасность</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link g-py-10" data-toggle="tab" href="#nav-1-1-default-hor-left-underline--3"
+                       role="tab">Настройки уведомлений</a>
+                </li>
+            </ul>
+            <!-- End Nav tabs -->
+
+            <!-- Tab panes -->
+            <div id="nav-1-1-default-hor-left-underline" class="tab-content">
+                <!-- Edit Profile -->
+                <div class="tab-pane fade{% if action == 'edit_profile' %} show active{% endif %}" id="nav-1-1-default-hor-left-underline--1" role="tabpanel"
+                     data-parent="#nav-1-1-default-hor-left-underline">
+                    <h2 class="h4 g-font-weight-300">Отредактируйте информацию о себе</h2>
+                    <p class="g-mb-25">Ниже вы можете указать свой E-Mail, ФИО, образовательную организацию и прочие данные.</p>
+
+                    {% include 'my_auth/my_profile/settings/_partials/profile_form.html' %}
+                </div>
+                <!-- End Edit Profile -->
+
+                <!-- Security Settings -->
+                <div class="tab-pane fade{% if action == 'edit_security' %} show active{% endif %}" id="nav-1-1-default-hor-left-underline--2" role="tabpanel"
+                     data-parent="#nav-1-1-default-hor-left-underline">
+                    <h2 class="h4 g-font-weight-300">Безопасность</h2>
+                    <p class="g-mb-25">Здесь вы можете поменять свой пароль.</p>
+
+                    {% include 'my_auth/my_profile/settings/_partials/password_change_form.html' %}
+                </div>
+                <!-- End Security Settings -->
+
+                <!-- Payment Options -->
+                <div class="tab-pane fade" id="nav-1-1-default-hor-left-underline--3" role="tabpanel"
+                     data-parent="#nav-1-1-default-hor-left-underline">
+                    <h2 class="h4 g-font-weight-300">Настройки уведомлений</h2>
+                    <p class="g-mb-25">Здесь вы можете указать какие типы уведомлений будут приходить вам на почту.</p>
+
+                    <p class="lead g-font-weight-600">В разработке</p>
+
+                </div>
+                <!-- End Payment Options -->
+            </div>
+            <!-- End Tab panes -->
+            <!-- End Profle Content -->
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+{{ forum_profile_form.media.css }}
+{% endblock extra_css %}
+
+{% block extra_js %}
+{{ forum_profile_form.media.js }}
+{% endblock extra_js %}

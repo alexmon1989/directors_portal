@@ -34,6 +34,8 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    {% block extra_css %}{% endblock extra_css %}
 </head>
 
 <body>
@@ -118,6 +120,8 @@
 
 <!-- JS Custom -->
 <script src="{% static 'js/custom.js' %}"></script>
+
+{% block extra_js %}{% endblock extra_js %}
 
 <!-- JS Plugins Init. -->
 <script>
