@@ -3,6 +3,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.views.generic.edit import FormView
 from django.views.generic import TemplateView, View
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -200,15 +201,20 @@ class ProfileView(LoginRequiredMixin, DetailView):
     model = ForumProfile
     context_object_name = 'profile'
 
+    def get(self, request, **kwargs):
+        self.object = self.get_object()
+        # Если это профиль текущего пользователя, то производится переадресация его на страницу my_profile
+        if self.object.user == self.request.user:
+            return redirect('my_profile')
+        else:
+            context = self.get_context_data(object=self.object)
+            return self.render_to_response(context)
+
     def get_object(self, queryset=None):
         return self.model.objects.filter(user=self.kwargs['pk']).first()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        # Если это профиль текущего пользователя, то производится переадресация его на страницу my_profile
-        if self.object.user == self.request.user:
-            return redirect('my_profile')
 
         # Computes the number of topics added by the considered member
         context['topics_count'] = (
@@ -227,4 +233,16 @@ class ProfileView(LoginRequiredMixin, DetailView):
         )
         context['recent_posts'] = context['recent_posts'][:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
 
+        return context
+
+
+class UsersListView(LoginRequiredMixin, ListView):
+    """Отображает список пользователей портала."""
+    template_name = 'my_auth/my_profile/profiles_list/index.html'
+    model = get_user_model()
+    queryset = get_user_model().objects.order_by('last_name', 'first_name', 'middle_name')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile'] = ForumProfile.objects.filter(user=self.request.user).first()
         return context

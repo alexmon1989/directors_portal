@@ -9,8 +9,8 @@
         <span><i class="icon-envelope g-pos-rel g-top-1 g-mr-8"></i> Сообщения</span>
     </a>
 
-    <a href="#"
-       class="list-group-item list-group-item-action justify-content-between">
+    <a href="{% url 'profiles_list' %}"
+       class="list-group-item list-group-item-action justify-content-between {% if request.resolver_match.url_name == 'profiles_list' %}active{% endif %}">
         <span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> Пользователи Портала</span>
     </a>
 

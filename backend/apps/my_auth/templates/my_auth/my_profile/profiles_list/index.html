@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load thumbnail %}
+
+{% block breadcrumbs %}
+    <section class="g-my-30">
+        <div class="container">
+            <ul class="u-list-inline">
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="/">Главная</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Учётные записи</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-color-primary">
+                    <span>Список пользователей</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row g-mt-minus-30">
+        <div class="col-lg-3 g-mb-50 g-mb-0--lg">
+            <!-- User Image -->
+            <div class="profile-avatar">
+                {% if profile.avatar %}
+                    <img class="img-fluid" src="{{ profile.avatar.url }}"/>
+                {% else %}
+                    <img class="img-fluid" src="//via.placeholder.com/300x300?text=No+Photo"/>
+                {% endif %}
+            </div>
+            <!-- End User Image -->
+
+            <!-- Sidebar Navigation -->
+            {% include 'my_auth/my_profile/_partials/sidebar.html' %}
+            <!-- End Sidebar Navigation -->
+        </div>
+
+        <div class="col-lg-9">
+            <!-- User Contacts -->
+            <div class="row g-mb-40">
+                {% for user in object_list %}
+                    <div class="col-md-4 g-mb-30">
+                        <!-- Figure -->
+                        <figure class="g-bg-white g-brd-around g-brd-gray-light-v4 g-brd-cyan--hover g-transition-0_2 text-center">
+                            <div class="g-py-40 g-px-20">
+                                {% spaceless %}
+                                    <a href="{% url 'profile_details' user.pk %}">
+                                        {% thumbnail user.forum_profile.avatar "125x125" crop="center" as im %}
+                                            <img class="g-width-125 g-height-125 rounded-circle g-mb-20"
+                                                 src="{{ im.url }}"
+                                                 width="{{ im.width }}"
+                                                 height="{{ im.height }}">
+                                        {% empty %}
+                                            <img class="g-width-125 g-height-125 rounded-circle g-mb-20"
+                                                 src="https://via.placeholder.com/125?text=No+Image">
+                                        {% endthumbnail %}
+                                    </a>
+                                {% endspaceless %}
+
+                                <!-- Figure Info -->
+                                <h4 class="h5 g-mb-5">
+                                    <a class="g-color-main"
+                                       href="{% url 'profile_details' user.pk %}">{{ user.get_name }}</a>
+                                </h4>
+                                <div class="d-block">
+                                    <span class="g-color-cyan g-font-size-default g-mr-3">
+                                        <i class="icon-user"></i>
+                                    </span>
+                                    {% if user.is_staff or user.is_admin %}
+                                        <em class="g-color-darkred g-font-style-normal g-font-size-default">Администратор</em>
+                                    {% else %}
+                                        <em class="g-color-gray-dark-v4 g-font-style-normal g-font-size-default">Пользователь</em>
+                                    {% endif %}
+                                </div>
+                                <!-- End Figure Info -->
+
+                                <a href="#" class="btn btn-primary g-mt-20"><i class="fa fa-envelope"></i> Сообщение</a>
+                            </div>
+
+                        </figure>
+                        <!-- End Figure -->
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- End User Contacts -->
+        </div>
+    </div>
+{% endblock %}
