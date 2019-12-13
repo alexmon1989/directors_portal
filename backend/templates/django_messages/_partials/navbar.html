@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<ul class="nav nav-justified u-nav-v1-1 u-nav-primary g-brd-bottom--md g-brd-bottom-2 g-brd-primary g-mb-20"
+    data-target="nav-1-1-default-hor-left-underline"
+    data-tabs-mobile-type="slide-up-down"
+    data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-primary g-mb-20">
+    <li class="nav-item">
+        <a class="nav-link g-py-10 {% if request.resolver_match.url_name == 'messages_inbox' or request.resolver_match.url_name == 'messages_detail' %}active{% endif %}"
+           href="{% url 'messages_inbox' %}">{% trans "Inbox" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link g-py-10 {% if request.resolver_match.url_name == 'messages_outbox' %}active{% endif %}"
+           href="{% url 'messages_outbox' %}">{% trans "Sent Messages" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link g-py-10 {% if request.resolver_match.url_name == 'messages_trash' %}active{% endif %}"
+           href="{% url 'messages_trash' %}">{% trans "Trash" %}</a>
+    </li>
+</ul>

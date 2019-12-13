@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load inbox %}
 
 <header id="js-header"
         class="u-header u-header--static u-header--show-hide u-header--change-appearance"
@@ -54,8 +55,12 @@
                 </div>
                 <!-- End Navigation -->
 
-                <div class="g-pos-rel g-pt-3--lg ml-lg-auto g-ml-0--lg g-font-weight-600">
+                {% inbox_count as inbox_count %}
+                <div class="g-pos-rel g-pt-3--lg g-mr-60 g-mr-0--lg g-font-weight-600">
                     {% if user.is_authenticated %}
+                        {% if inbox_count %}
+                            <span class="u-badge-v2--xs u-badge--top-left g-bg-red g-mt-7 g-ml-minus-5"></span>
+                        {% endif %}
                         <a href="{% url "my_profile" %}">
                         <span data-toggle="tooltip"
                               data-placement="bottom"

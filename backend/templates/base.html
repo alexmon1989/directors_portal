@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{% static 'vendor/animate.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/hs-megamenu/src/hs.megamenu.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/toastr/toastr.min.css' %}">
 
     <!-- CSS Unify -->
     <link rel="stylesheet" href="{% static 'css/unify-core.css' %}">
@@ -105,6 +106,7 @@
 <script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
 <script src="{% static 'vendor/slick-carousel/slick/slick.js' %}"></script>
 <script src="{% static 'vendor/fancybox/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'vendor/toastr/toastr.min.js' %}"></script>
 
 <!-- JS Unify -->
 <script src="{% static 'js/hs.core.js' %}"></script>
@@ -146,6 +148,12 @@
 
         // initialization of popups
         $.HSCore.components.HSPopup.init('.js-fancybox');
+
+        {% if messages %}
+            {% for message in messages %}
+                toastr["{{ message.tags }}"]("{{ message }}");
+            {% endfor %}
+        {% endif %}
     });
 
     $(window).on('load', function () {

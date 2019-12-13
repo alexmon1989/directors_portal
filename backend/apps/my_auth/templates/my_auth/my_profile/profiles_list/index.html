@@ -3,6 +3,8 @@
 {% load i18n %}
 {% load thumbnail %}
 
+{% block title %}Список пользователей Портала{% endblock %}
+
 {% block breadcrumbs %}
     <section class="g-my-30">
         <div class="container">
@@ -81,7 +83,9 @@
                                 </div>
                                 <!-- End Figure Info -->
 
-                                <a href="#" class="btn btn-primary g-mt-20"><i class="fa fa-envelope"></i> Сообщение</a>
+                                {% if user != request.user %}
+                                    <a href="{% url 'messages_compose_to' user.email %}" class="btn btn-primary g-mt-20"><i class="fa fa-envelope"></i> Сообщение</a>
+                                {% endif %}
                             </div>
 
                         </figure>

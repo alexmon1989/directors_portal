@@ -8,7 +8,7 @@ def index(request):
     news = News.objects.filter(
         is_on_home=True,
         is_visible=True,
-        published_at__gte=timezone.now()
+        published_at__lte=timezone.now()
     ).order_by('-published_at')
 
     return render(

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load extras %}
+
+{% block title %}{% trans "Compose Message" %}{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="g-my-30">
+        <div class="container">
+            <ul class="u-list-inline">
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="/">Главная</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover"
+                       href="{% url 'messages_inbox' %}">Сообщения</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-color-primary">
+                    <span>{% trans "Compose Message" %}</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="row g-mt-minus-30">
+        <div class="col-lg-3 g-mb-50 g-mb-0--lg">
+            <div class="profile-avatar">
+                {% if request.user.forum_profile.avatar %}
+                    <img class="img-fluid" src="{{ request.user.forum_profile.avatar.url }}"/>
+                {% else %}
+                    <img class="img-fluid" src="//via.placeholder.com/300x300?text=No+Photo"/>
+                {% endif %}
+            </div>
+
+            <!-- Sidebar Navigation -->
+            {% include 'my_auth/my_profile/_partials/sidebar.html' %}
+            <!-- End Sidebar Navigation -->
+        </div>
+
+        <div class="col-lg-9">
+            <!-- Nav tabs -->
+            {% include 'django_messages/_partials/navbar.html' %}
+            <!-- End Nav tabs -->
+
+            <h1 class="h2 g-mb-30">{% trans "Compose Message"%}</h1>
+
+            <form action="" method="post">
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div id="div_id_{{ field.html_name }}" class="form-group row g-mb-25{% if field.errors %} u-has-error-v1{% endif %}">
+                        {% if field.label %}
+                            <label class="col-sm-3 col-form-label g-color-gray-dark-v2 g-font-weight-700 text-sm-right g-mb-10"
+                                   for="{{ field.auto_id }}"
+                            >{{ field.label }}{% if field.field.required %}&nbsp;<span class="text-muted g-color-red">*</span>{% endif %}</label>
+                        {% endif %}
+                        <div class="col-sm-9">
+                            {{ field|add_class:'form-control form-control-md rounded-0 g-py-13 pr-0 g-brd-primary--focus' }}
+
+                            {% if field.help_text %}
+                                <p class="help-block text-muted g-mb-0"><small>{{ field.help_text }}</small></p>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <small class="form-control-feedback">{{ error }}</small><br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="text-sm-right">
+                    <button type="submit" class="btn u-btn-primary rounded-0 g-py-12 g-px-25">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% if form.recipient.value %}
+{% block extra_js %}
+    <script>
+        $id_recipient = $("#id_recipient");
+        $id_recipient_cloned = $id_recipient.clone();
+        $id_recipient.hide();
+        $id_recipient_cloned.removeAttr('name').attr('disabled', true).insertAfter( $id_recipient );
+        $id_recipient_cloned.val('{% get_name_by_email form.recipient.value %}');
+    </script>
+{% endblock %}
+{% endif %}

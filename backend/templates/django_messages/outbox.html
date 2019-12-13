@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Sent Messages" %}{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="g-my-30">
+        <div class="container">
+            <ul class="u-list-inline">
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="/">Главная</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="{% url 'messages_inbox' %}">Сообщения</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-color-primary">
+                    <span>{% trans "Sent Messages" %}</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="row g-mt-minus-30">
+        <div class="col-lg-3 g-mb-50 g-mb-0--lg">
+            <div class="profile-avatar">
+                {% if request.user.forum_profile.avatar %}
+                    <img class="img-fluid" src="{{ request.user.forum_profile.avatar.url }}" />
+                {% else %}
+                    <img class="img-fluid" src="//via.placeholder.com/300x300?text=No+Photo" />
+                {% endif %}
+            </div>
+
+            <!-- Sidebar Navigation -->
+            {% include 'my_auth/my_profile/_partials/sidebar.html' %}
+            <!-- End Sidebar Navigation -->
+        </div>
+
+        <div class="col-lg-9">
+            <!-- Nav tabs -->
+            {% include 'django_messages/_partials/navbar.html' %}
+            <!-- End Nav tabs -->
+
+            {% if message_list %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Recipient" %}</th>
+                                <th>{% trans "Subject" %}</th>
+                                <th>{% trans "Sent" %}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for message in message_list %}
+                            <tr>
+                                <td>{{ message.recipient.get_name }}</td>
+                                <td>
+                                    <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a>
+                                </td>
+                                <td>{{ message.sent_at }}</td>
+                                <td class="text-center">
+                                    <a class="btn btn-sm u-btn-darkred"
+                                       title="Удалить"
+                                       href="{% url 'messages_delete' message.id %}">&times;</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="lead g-font-weight-500">{% trans "No messages." %}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

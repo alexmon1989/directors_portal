@@ -15,17 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import url
 from machina import urls as machina_urls
 from django.conf import settings
 from django.conf.urls.static import static
 from apps.my_auth.views import MyLoginView
+from django_messages.views import reply
+from apps.core_app.utils import format_quote
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.home.urls')),
     path('news/', include('apps.news.urls')),
     path('forum/', include(machina_urls)),
-    path('messages/', include('django_messages.urls')),
+    url(
+        r'^accounts/messages/reply/(?P<message_id>[\d]+)/$',
+        reply,
+        {'quote_helper': format_quote},
+        name='messages_reply'
+    ),
+    path('accounts/messages/', include('django_messages.urls')),
     path('accounts/login/', MyLoginView.as_view(), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('apps.my_auth.urls')),
