@@ -14,6 +14,7 @@ from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from django.contrib import messages
 from machina.apps.forum_member.models import ForumProfile
 from machina.apps.forum_conversation.models import Post, Topic
 from machina.apps.forum.models import Forum
@@ -172,6 +173,7 @@ class MyProfileSettingsView(LoginRequiredMixin, View):
             if context['profile_form'].is_valid() and context['forum_profile_form'].is_valid():
                 context['profile_form'].save()
                 context['forum_profile_form'].save()
+                messages.info(request, 'Настройки успешно сохранены.')
                 return redirect('my_profile_settings')
 
         elif context['action'] == 'edit_security':
@@ -180,6 +182,7 @@ class MyProfileSettingsView(LoginRequiredMixin, View):
             if context['password_change_form'].is_valid():
                 context['password_change_form'].save()
                 login(request, request.user)
+                messages.info(request, 'Настройки успешно сохранены.')
                 return redirect('my_profile_settings')
 
         return render(request, self.template_name, context)
