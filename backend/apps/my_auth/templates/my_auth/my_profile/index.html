@@ -114,12 +114,14 @@
                     </li>
                 {% endif %}
 
+                {% if profile.user.address %}
                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                         <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Страна/регион/город проживания</strong>
-                        <span class="align-top"></span>
+                        <span class="align-top">{{ profile.user.address }}</span>
                     </div>
                 </li>
+                {% endif %}
 
                 {% if request.user.birthdate %}
                 <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">

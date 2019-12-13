@@ -38,5 +38,6 @@ class ProfileForm(ModelForm):
             'first_name',
             'middle_name',
             'organization',
+            'address',
             'phone',
         )
