@@ -63,6 +63,10 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
 
+    'sorl.thumbnail',
+
+    'pinax.notifications',
+
     'debug_toolbar',
 
     'apps.home',

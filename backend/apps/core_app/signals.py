@@ -6,8 +6,6 @@ from machina.apps.forum_member.models import ForumProfile
 
 @receiver(post_save, sender=get_user_model())
 def create_user_profile(sender, instance, created, **kwargs):
-    print('create_user_profile')
     if created:
-        print('created')
         # Создание форумного профиля
         ForumProfile.objects.create(user=instance)
