@@ -39,7 +39,7 @@
                     {% include "registration/_partials/form_field.html" with field=form.password1 %}
                     {% include "registration/_partials/form_field.html" with field=form.password2 %}
 
-                    <div class="mb-4">
+                    <div class="mb-4{% if form.rules_agree.errors %} u-has-error-v1{% endif %}">
                         <label class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-13 g-pl-25">
                             <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0"
                                    value="1"
@@ -51,6 +51,13 @@
                             </div>
                             Я принимаю <a href="#!" class="g-pl-5">условия Портала</a>
                         </label>
+                    {% if form.rules_agree.errors %}
+                        <p>
+                            {% for error in form.rules_agree.errors %}
+                                <small class="form-control-feedback">{{ error }}</small><br>
+                            {% endfor %}
+                        </p>
+                    {% endif %}
                     </div>
 
                     <button class="btn btn-md btn-block u-btn-primary rounded-0 g-py-15 mb-3" type="submit">Зарегистрироваться</button>
