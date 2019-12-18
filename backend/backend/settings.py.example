@@ -289,3 +289,5 @@ INTERNAL_IPS = [
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+PINAX_USE_SSL = False

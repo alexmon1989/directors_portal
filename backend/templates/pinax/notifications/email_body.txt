@@ -1,0 +1,6 @@
+{% load i18n %}{% url "my_profile_settings" as notices_url %}{% blocktrans %}Вы получили новое уведомление с сайта {{ current_site }}:
+
+{{ message }}
+
+Чтобы изменить настройки получения уведомлений, пожалуйста, перейдите по ссылке {{ default_http_protocol }}://{{ current_site }}{{ notices_url }}?action=edit_notifications
+{% endblocktrans %}

@@ -38,7 +38,7 @@ urlpatterns = [
     path('accounts/login/', MyLoginView.as_view(), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('apps.my_auth.urls')),
-    path('accounts/', include('apps.my_auth.urls')),
+    url(r"^me/settings//notifications/", include("pinax.notifications.urls", namespace="pinax_notifications")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

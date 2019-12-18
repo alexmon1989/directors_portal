@@ -20,6 +20,7 @@ from machina.apps.forum_conversation.models import Post, Topic
 from machina.apps.forum.models import Forum
 from machina.conf import settings as machina_settings
 from machina.apps.forum_member.forms import ForumProfileForm
+from pinax.notifications.views import NoticeSettingsView
 
 from .tokens import account_activation_token
 from .forms import SignUpForm, ProfileForm
@@ -150,15 +151,15 @@ class MyProfileInformationView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class MyProfileSettingsView(LoginRequiredMixin, View):
+class MyProfileSettingsView(LoginRequiredMixin, NoticeSettingsView):
     """Отображает страницу с настройками учётной записи пользователя."""
     template_name = 'my_auth/my_profile/settings/index.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, self.get_context())
+        return render(request, self.template_name, self.get_context_data())
 
     def post(self, request, *args, **kwargs):
-        context = self.get_context()
+        context = self.get_context_data()
 
         context['action'] = self.request.POST.get('action')
 
@@ -185,17 +186,28 @@ class MyProfileSettingsView(LoginRequiredMixin, View):
                 messages.info(request, 'Настройки успешно сохранены.')
                 return redirect('my_profile_settings')
 
+        elif context['action'] == 'edit_notifications':
+            # Редактирование настроек уведомлений
+            table = self.settings_table()
+            for row in table:
+                for cell in row["cells"]:
+                    self.process_cell(cell[0])
+            messages.info(request, 'Настройки успешно сохранены.')
+            return redirect('my_profile_settings')
+
         return render(request, self.template_name, context)
 
-    def get_context(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         profile = ForumProfile.objects.filter(user=self.request.user).first()
-        return {
+        context.update({
             'action': self.request.GET.get('action', 'edit_profile'),
             'profile': profile,
             'profile_form': ProfileForm(instance=self.request.user),
             'forum_profile_form': ForumProfileForm(instance=profile),
             'password_change_form': PasswordChangeForm(user=self.request.user),
-        }
+        })
+        return context
 
 
 class ProfileView(LoginRequiredMixin, DetailView):
