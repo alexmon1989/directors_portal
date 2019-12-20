@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Справка{% endblock %}
+
+{% block breadcrumbs %}
+    {% include 'faq/_partials/breadcrumbs.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-unstyled" id="faq-list">
+                {% for section in section_list %}
+                    <li class="g-font-weight-600 g-font-size-20">
+                        {{ section.title }}
+                        {% if section.question_set.all %}
+                            <ol class="g-py-10">
+                                {% for question in section.question_set.all %}
+                                    <li class="g-font-weight-400 g-font-size-14">
+                                        <a class="g-text-underline" href="#question-{{ question.pk }}">{{ question.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ol>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <hr>
+
+            <div class="g-pl-25">
+                {% for section in section_list %}
+                    <h3 class="g-font-weight-600 g-font-size-20 g-mb-0">{{ section.title }}</h3>
+                    <hr class="g-mt-0">
+
+                    {% for question in section.question_set.all %}
+                        <dl id="#question-{{ question.pk }}" class="g-mb-0">
+                            <div class="d-flex">
+                                <dt class="g-width-30"><abbr title="Вопрос">В.</abbr></dt>
+                                <dd>{{ question.title }}</dd>
+                            </div>
+
+                            <div class="d-flex">
+                                <dt class="g-width-30"><abbr title="Ответ">О.</abbr></dt>
+                                <dd>{{ question.answer|safe }}</dd>
+                            </div>
+                        </dl>
+
+                        <a href="#faq-list">Наверх</a>
+
+                        <hr class="g-my-20">
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

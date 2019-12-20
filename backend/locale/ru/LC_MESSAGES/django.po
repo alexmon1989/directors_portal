@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-25 13:15+0200\n"
+"POT-Creation-Date: 2019-12-19 16:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,30 +32,177 @@ msgstr ""
 msgid "Important dates"
 msgstr ""
 
-#: .\apps\core_app\models.py:15
+#: .\apps\core_app\models.py:20
 msgid "staff status"
 msgstr ""
 
-#: .\apps\core_app\models.py:17
+#: .\apps\core_app\models.py:22
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: .\apps\core_app\models.py:20
+#: .\apps\core_app\models.py:25
 msgid "active"
 msgstr ""
 
-#: .\apps\core_app\models.py:23
+#: .\apps\core_app\models.py:28
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: .\apps\core_app\models.py:31 .\apps\core_app\models.py:52
+#: .\apps\core_app\models.py:37 .\apps\core_app\models.py:68
 msgid "user"
 msgstr ""
 
-#: .\apps\core_app\models.py:32 .\apps\core_app\models.py:53
+#: .\apps\core_app\models.py:38 .\apps\core_app\models.py:69
 msgid "users"
+msgstr ""
+
+#: .\apps\core_app\utils.py:15
+#, python-format
+msgid ""
+"%(sender)s wrote:\n"
+"%(body)s"
+msgstr ""
+
+#: .\apps\my_auth\templates\my_auth\my_profile\index.html:140
+#: .\apps\my_auth\templates\my_auth\profile\index.html:140
+#: .\templates\machina\forum\index.html:26
+#: .\templates\machina\forum_member\forum_profile_detail.html:37
+msgid "Statistics"
+msgstr ""
+
+#: .\apps\my_auth\templates\my_auth\my_profile\index.html:170
+#: .\apps\my_auth\templates\my_auth\profile\index.html:170
+#: .\templates\machina\forum_member\forum_profile_detail.html:74
+msgid "Recent posts"
+msgstr ""
+
+#: .\apps\my_auth\templates\my_auth\my_profile\index.html:170
+#: .\apps\my_auth\templates\my_auth\profile\index.html:170
+#: .\templates\machina\forum_member\forum_profile_detail.html:74
+msgid "View all"
+msgstr ""
+
+#: .\apps\my_auth\templates\my_auth\my_profile\index.html:182
+#: .\apps\my_auth\templates\my_auth\profile\index.html:182
+#: .\templates\machina\forum_member\forum_profile_detail.html:86
+#, python-format
+msgid "On %(creation_date)s"
+msgstr "В %(creation_date)s"
+
+#: .\apps\my_auth\templates\my_auth\my_profile\settings\_partials\notifications_form.html:9
+#: .\templates\pinax\notifications\notice_settings.html:26
+msgid "Notification Type"
+msgstr ""
+
+#: .\templates\django_messages\_partials\navbar.html:9
+#: .\templates\django_messages\base.html:8
+#: .\templates\django_messages\new_message.html:12
+msgid "Inbox"
+msgstr ""
+
+#: .\templates\django_messages\_partials\navbar.html:13
+#: .\templates\django_messages\base.html:9
+#: .\templates\django_messages\outbox.html:4
+#: .\templates\django_messages\outbox.html:19
+msgid "Sent Messages"
+msgstr ""
+
+#: .\templates\django_messages\_partials\navbar.html:17
+#: .\templates\django_messages\base.html:11
+msgid "Trash"
+msgstr ""
+
+#: .\templates\django_messages\base.html:10
+msgid "New Message"
+msgstr ""
+
+#: .\templates\django_messages\compose.html:6
+#: .\templates\django_messages\compose.html:22
+#: .\templates\django_messages\compose.html:50
+msgid "Compose Message"
+msgstr ""
+
+#: .\templates\django_messages\inbox.html:53
+#: .\templates\django_messages\trash.html:53
+#: .\templates\django_messages\view.html:53
+msgid "Sender"
+msgstr ""
+
+#: .\templates\django_messages\inbox.html:54
+#: .\templates\django_messages\outbox.html:53
+#: .\templates\django_messages\trash.html:54
+#: .\templates\django_messages\view.html:48
+msgid "Subject"
+msgstr ""
+
+#: .\templates\django_messages\inbox.html:55
+msgid "Received"
+msgstr ""
+
+#: .\templates\django_messages\inbox.html:82
+#: .\templates\django_messages\outbox.html:78
+#: .\templates\django_messages\trash.html:76
+msgid "No messages."
+msgstr ""
+
+#: .\templates\django_messages\new_message.html:3
+#, python-format
+msgid ""
+"Hello %(recipient)s,\n"
+"\n"
+"you received a private message from %(sender)s with\n"
+"the following contents:"
+msgstr ""
+
+#: .\templates\django_messages\new_message.html:11
+#, python-format
+msgid "Sent from %(site_url)s"
+msgstr ""
+
+#: .\templates\django_messages\new_message.html:13
+#: .\templates\django_messages\view.html:73
+msgid "Reply"
+msgstr ""
+
+#: .\templates\django_messages\outbox.html:52
+#: .\templates\django_messages\view.html:63
+msgid "Recipient"
+msgstr ""
+
+#: .\templates\django_messages\outbox.html:54
+msgid "Sent"
+msgstr ""
+
+#: .\templates\django_messages\trash.html:4
+#: .\templates\django_messages\trash.html:20
+msgid "Deleted Messages"
+msgstr ""
+
+#: .\templates\django_messages\trash.html:55
+#: .\templates\django_messages\view.html:58
+msgid "Date"
+msgstr ""
+
+#: .\templates\django_messages\trash.html:56
+#, fuzzy
+#| msgid "Options"
+msgid "Action"
+msgstr "Настройки"
+
+#: .\templates\django_messages\trash.html:67
+msgid "undelete"
+msgstr ""
+
+#: .\templates\django_messages\view.html:4
+#: .\templates\django_messages\view.html:19
+msgid "View Message"
+msgstr ""
+
+#: .\templates\django_messages\view.html:76
+#: .\templates\machina\forum_conversation\topic_detail.html:44
+msgid "Delete"
 msgstr ""
 
 #: .\templates\machina\board_base.html:6
@@ -79,33 +226,41 @@ msgstr "Мои сообщения"
 msgid "Moderation queue"
 msgstr ""
 
+#: .\templates\machina\board_base.html:65
+#: .\templates\machina\forum_search\search.html:5
+#: .\templates\machina\forum_search\search.html:11
+#: .\templates\machina\forum_search\search.html:32
+#: .\templates\machina\forum_search\search.html:42
+msgid "Search"
+msgstr "Поиск"
+
 #: .\templates\machina\board_base.html:68
 msgid "Advanced search"
 msgstr "Продвинутый поиск"
 
-#: .\templates\machina\forum\forum_detail.html:22
+#: .\templates\machina\forum\forum_detail.html:24
 msgid "Mark subforums read"
 msgstr ""
 
-#: .\templates\machina\forum\forum_detail.html:34
-#: .\templates\machina\forum\forum_detail.html:59
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:19
+#: .\templates\machina\forum\forum_detail.html:38
+#: .\templates\machina\forum\forum_detail.html:67
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:22
 #: .\templates\machina\forum_moderation\moderation_queue\list.html:67
 msgid "New topic"
 msgstr ""
 
-#: .\templates\machina\forum\forum_detail.html:40
-#: .\templates\machina\forum\forum_detail.html:65
+#: .\templates\machina\forum\forum_detail.html:46
+#: .\templates\machina\forum\forum_detail.html:75
 #: .\templates\machina\forum_tracking\mark_topics_read.html:5
 #: .\templates\machina\forum_tracking\mark_topics_read.html:11
 msgid "Mark topics read"
 msgstr ""
 
-#: .\templates\machina\forum\forum_detail.html:48
+#: .\templates\machina\forum\forum_detail.html:54
 msgid "Announcements"
 msgstr ""
 
-#: .\templates\machina\forum\forum_detail.html:52
+#: .\templates\machina\forum\forum_detail.html:58
 #: .\templates\machina\forum\forum_list.html:22
 #: .\templates\machina\forum\forum_list.html:40
 #: .\templates\machina\forum\forum_list.html:231
@@ -121,7 +276,7 @@ msgstr ""
 #: .\templates\machina\forum\forum_list.html:24
 #: .\templates\machina\forum\forum_list.html:42
 #: .\templates\machina\forum\forum_list.html:233
-#: .\templates\machina\forum_conversation\topic_list.html:15
+#: .\templates\machina\forum_conversation\topic_list.html:17
 msgid "Last post"
 msgstr ""
 
@@ -138,14 +293,14 @@ msgstr ""
 #: .\templates\machina\forum\forum_list.html:84
 #: .\templates\machina\forum\forum_list.html:168
 #, python-format
-msgid "By: <a class=\"g-color-blue\" href=\"%(poster_url)s\">%(username)s</a>"
+msgid "От: <a class=\"g-color-blue\" href=\"%(poster_url)s\">%(username)s</a>"
 msgstr ""
 
 #: .\templates\machina\forum\forum_list.html:88
 #: .\templates\machina\forum\forum_list.html:172
-#: .\templates\machina\forum_conversation\topic_list.html:58
+#: .\templates\machina\forum_conversation\topic_list.html:67
 #, python-format
-msgid "By: %(poster_username)s"
+msgid "От: %(poster_username)s"
 msgstr ""
 
 #: .\templates\machina\forum\forum_list.html:98
@@ -183,11 +338,6 @@ msgstr ""
 msgid "View unread topics"
 msgstr ""
 
-#: .\templates\machina\forum\index.html:26
-#: .\templates\machina\forum_member\forum_profile_detail.html:34
-msgid "Statistics"
-msgstr ""
-
 #: .\templates\machina\forum\index.html:27
 msgid "Total posts:"
 msgstr ""
@@ -197,8 +347,11 @@ msgid "Total topics:"
 msgstr ""
 
 #: .\templates\machina\forum_conversation\forum_attachments\attachment_formset.html:28
-#: .\templates\machina\forum_member\forum_profile_update.html:19
-#: .\templates\machina\partials\form_field.html:6
+#: .\templates\machina\forum_member\forum_profile_update.html:24
+#: .\templates\machina\partials\form_field.html:8
+#: .\templates\registration\_partials\form_field.html:9
+#: .\templates\registration\login.html:72
+#: .\templates\registration\login.html:87
 msgid "(optional)"
 msgstr ""
 
@@ -206,11 +359,11 @@ msgstr ""
 msgid "Add another file"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\forum_attachments\attachments_detail.html:8
+#: .\templates\machina\forum_conversation\forum_attachments\attachments_detail.html:9
 #: .\templates\machina\forum_conversation\forum_attachments\attachments_preview.html:7
 #: .\templates\machina\forum_conversation\partials\post_form.html:22
 #: .\templates\machina\forum_conversation\partials\post_form.html:60
-#: .\templates\machina\forum_conversation\partials\topic_form.html:24
+#: .\templates\machina\forum_conversation\partials\topic_form.html:25
 msgid "Attachments"
 msgstr ""
 
@@ -257,10 +410,10 @@ msgid "Total votes:"
 msgstr ""
 
 #: .\templates\machina\forum_conversation\forum_polls\poll_vote_form.html:35
-#: .\templates\machina\forum_conversation\partials\topic_form.html:100
-#: .\templates\machina\forum_conversation\post_create.html:28
-#: .\templates\machina\forum_conversation\post_update.html:27
-#: .\templates\machina\forum_member\forum_profile_update.html:35
+#: .\templates\machina\forum_conversation\partials\topic_form.html:103
+#: .\templates\machina\forum_conversation\post_create.html:30
+#: .\templates\machina\forum_conversation\post_update.html:29
+#: .\templates\machina\forum_member\forum_profile_update.html:44
 msgid "Submit"
 msgstr ""
 
@@ -273,64 +426,64 @@ msgstr ""
 msgid "Options"
 msgstr "Настройки"
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:15
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:16
 msgid "Post reply"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:18
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:20
 msgid "Subscribe"
 msgstr "Подписаться"
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:20
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:23
 msgid "Unsubscribe"
 msgstr "Отписаться"
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:26
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:37
 #: .\templates\machina\forum_moderation\topic_lock.html:5
 #: .\templates\machina\forum_moderation\topic_lock.html:12
 msgid "Lock topic"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:27
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:40
 #: .\templates\machina\forum_moderation\topic_unlock.html:5
 #: .\templates\machina\forum_moderation\topic_unlock.html:12
 msgid "Unlock topic"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:28
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:43
 #: .\templates\machina\forum_moderation\topic_delete.html:5
 #: .\templates\machina\forum_moderation\topic_delete.html:12
 msgid "Delete topic"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:29
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:45
 #: .\templates\machina\forum_moderation\topic_move.html:5
 #: .\templates\machina\forum_moderation\topic_move.html:12
 msgid "Move topic"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:31
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:38
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:49
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:66
 msgid "Change to sticky topic"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:32
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:35
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:52
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:59
 msgid "Change to announce"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:34
-#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:37
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:56
+#: .\templates\machina\forum_conversation\partials\topic_detail_actions.html:63
 msgid "Change to standard topic"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_form.html:23
+#: .\templates\machina\forum_conversation\partials\topic_form.html:24
 msgid "Poll"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\partials\topic_form.html:99
-#: .\templates\machina\forum_conversation\post_create.html:27
-#: .\templates\machina\forum_conversation\post_update.html:26
+#: .\templates\machina\forum_conversation\partials\topic_form.html:102
+#: .\templates\machina\forum_conversation\post_create.html:29
+#: .\templates\machina\forum_conversation\post_update.html:28
 msgid "Preview"
 msgstr ""
 
@@ -339,30 +492,28 @@ msgstr ""
 msgid "Post a reply"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\post_create.html:39
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:133
+#: .\templates\machina\forum_conversation\post_create.html:41
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:138
 msgid "Topic review"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\post_create.html:51
-#: .\templates\machina\forum_conversation\topic_detail.html:53
-#: .\templates\machina\forum_conversation\topic_list.html:34
+#: .\templates\machina\forum_conversation\post_create.html:54
+#: .\templates\machina\forum_conversation\topic_detail.html:61
 #: .\templates\machina\forum_member\user_posts_list.html:50
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:86
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:145
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:89
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:151
 #: .\templates\machina\forum_moderation\moderation_queue\list.html:51
-#: .\templates\machina\forum_search\search.html:83
+#: .\templates\machina\forum_search\search.html:84
 #, python-format
 msgid "By: <a href=\"%(poster_url)s\">%(username)s</a> on %(creation_date)s"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\post_create.html:55
-#: .\templates\machina\forum_conversation\topic_detail.html:57
-#: .\templates\machina\forum_conversation\topic_list.html:38
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:90
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:149
+#: .\templates\machina\forum_conversation\post_create.html:59
+#: .\templates\machina\forum_conversation\topic_detail.html:66
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:93
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:156
 #: .\templates\machina\forum_moderation\moderation_queue\list.html:55
-#: .\templates\machina\forum_search\search.html:87
+#: .\templates\machina\forum_search\search.html:89
 #, python-format
 msgid "By: %(poster_username)s on %(creation_date)s"
 msgstr ""
@@ -392,8 +543,8 @@ msgid "Yes, I'm sure"
 msgstr ""
 
 #: .\templates\machina\forum_conversation\post_delete.html:19
-#: .\templates\machina\forum_member\topic_subscribe.html:19
-#: .\templates\machina\forum_member\topic_unsubscribe.html:19
+#: .\templates\machina\forum_member\topic_subscribe.html:20
+#: .\templates\machina\forum_member\topic_unsubscribe.html:20
 #: .\templates\machina\forum_moderation\moderation_queue\post_approve.html:19
 #: .\templates\machina\forum_moderation\moderation_queue\post_disapprove.html:19
 #: .\templates\machina\forum_moderation\topic_delete.html:19
@@ -418,66 +569,75 @@ msgstr ""
 msgid "Post a new topic"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_detail.html:34
+#: .\templates\machina\forum_conversation\topic_detail.html:38
+#: .\templates\machina\forum_conversation\topic_detail.html:39
 msgid "Edit"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_detail.html:38
-msgid "Delete"
-msgstr ""
-
-#: .\templates\machina\forum_conversation\topic_detail.html:76
+#: .\templates\machina\forum_conversation\topic_detail.html:86
 msgid "Last edited by:"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_detail.html:76
+#: .\templates\machina\forum_conversation\topic_detail.html:88
 msgid "Updated"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_detail.html:76
+#: .\templates\machina\forum_conversation\topic_detail.html:89
 msgid "on"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_detail.html:76
+#: .\templates\machina\forum_conversation\topic_detail.html:90
 #, python-format
 msgid "edited %(counter)s time in total."
 msgid_plural "edited %(counter)s times in total."
 msgstr[0] "Отредактировано %(counter)s раз."
 msgstr[1] "Отредактировано %(counter)s раз."
 
-#: .\templates\machina\forum_conversation\topic_detail.html:81
+#: .\templates\machina\forum_conversation\topic_detail.html:95
 msgid "Reason:"
 msgstr "Причина:"
 
-#: .\templates\machina\forum_conversation\topic_detail.html:95
+#: .\templates\machina\forum_conversation\topic_detail.html:113
 #: .\templates\machina\forum_member\user_posts_list.html:67
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:117
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:122
 msgid "Posts:"
 msgstr "Сообщений:"
 
-#: .\templates\machina\forum_conversation\topic_detail.html:98
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:120
+#: .\templates\machina\forum_conversation\topic_detail.html:117
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:125
 msgid "Anonymous user"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_list.html:13
+#: .\templates\machina\forum_conversation\topic_list.html:15
 msgid "Replies"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_list.html:14
+#: .\templates\machina\forum_conversation\topic_list.html:16
 msgid "Views"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_list.html:29
+#: .\templates\machina\forum_conversation\topic_list.html:35
 msgid "This topic is locked"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_list.html:54
+#: .\templates\machina\forum_conversation\topic_list.html:40
 #, python-format
-msgid "By: <a href=\"%(poster_url)s\">%(username)s</a>"
+msgid ""
+"От: <a href=\"%(poster_url)s\" class=\"g-color-blue\">%(username)s</a> в "
+"%(creation_date)s"
 msgstr ""
 
-#: .\templates\machina\forum_conversation\topic_list.html:74
+#: .\templates\machina\forum_conversation\topic_list.html:45
+#, python-format
+msgid "От: %(poster_username)s в %(creation_date)s"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_list.html:63
+#, python-format
+msgid "От: <a href=\"%(poster_url)s\" class=\"g-color-blue\">%(username)s</a>"
+msgstr ""
+
+#: .\templates\machina\forum_conversation\topic_list.html:85
 msgid "There are no topics in this forum."
 msgstr ""
 
@@ -490,49 +650,61 @@ msgid "Posted by"
 msgstr ""
 
 #: .\templates\machina\forum_member\forum_profile_detail.html:5
-#: .\templates\machina\forum_member\forum_profile_detail.html:10
 #, python-format
-msgid "%(username)s profile"
+msgid "%(username)s profile\n"
 msgstr ""
 
-#: .\templates\machina\forum_member\forum_profile_detail.html:26
+#: .\templates\machina\forum_member\forum_profile_detail.html:11
+#, python-format
+msgid ""
+"%(username)s\n"
+"                profile"
+msgstr ""
+
+#: .\templates\machina\forum_member\forum_profile_detail.html:29
 msgid "Edit profile"
 msgstr ""
 
-#: .\templates\machina\forum_member\forum_profile_detail.html:40
+#: .\templates\machina\forum_member\forum_profile_detail.html:43
 #, python-format
 msgid ""
-"<h2><strong>%(counter)s</strong></h2>\n"
-"                      <p><small>Post</small></p>"
+"\n"
+"                                                    <h2><strong>%(counter)s</"
+"strong></h2>\n"
+"                                                    <p>\n"
+"                                                        <small>Post</small>\n"
+"                                                    </p>"
 msgid_plural ""
 "<h2><strong>%(counter)s</strong></h2>\n"
-"                      <p class=\"mb-1\"><small>Posts</small></p>"
+"                                                    <p class=\"mb-1\">\n"
+"                                                        <small>Posts</"
+"small>\n"
+"                                                    </p>"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
-#: .\templates\machina\forum_member\forum_profile_detail.html:45
+#: .\templates\machina\forum_member\forum_profile_detail.html:53
 #, python-format
 msgid ""
-"<h2><strong>%(counter)s</strong></h2>\n"
-"                      <p><small>Topic</small></p>"
+"\n"
+"                                                    <h2><strong>%(counter)s</"
+"strong></h2>\n"
+"                                                    <p>\n"
+"                                                        <small>Topic</"
+"small>\n"
+"                                                    </p>"
 msgid_plural ""
 "<h2><strong>%(counter)s</strong></h2>\n"
-"                      <p class=\"mb-1\"><small>Topics</small></p>"
+"                                                    <p class=\"mb-1\">\n"
+"                                                        <small>Topics</"
+"small>\n"
+"                                                    </p>"
 msgstr[0] ""
 msgstr[1] ""
-
-#: .\templates\machina\forum_member\forum_profile_detail.html:60
-msgid "Recent posts"
-msgstr ""
-
-#: .\templates\machina\forum_member\forum_profile_detail.html:60
-msgid "View all"
-msgstr ""
-
-#: .\templates\machina\forum_member\forum_profile_detail.html:70
-#, python-format
-msgid "On %(creation_date)s"
-msgstr "В %(creation_date)s"
+msgstr[2] ""
+msgstr[3] ""
 
 #: .\templates\machina\forum_member\forum_profile_update.html:4
 #: .\templates\machina\forum_member\forum_profile_update.html:11
@@ -595,23 +767,23 @@ msgstr[1] ""
 msgid "No posts found"
 msgstr ""
 
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:15
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:16
 msgid "Disapprove"
 msgstr ""
 
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:16
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:18
 msgid "Approve"
 msgstr ""
 
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:19
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:22
 msgid "New post"
 msgstr ""
 
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:32
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:35
 msgid "<b>1</b> option may be selected"
 msgstr ""
 
-#: .\templates\machina\forum_moderation\moderation_queue\detail.html:36
+#: .\templates\machina\forum_moderation\moderation_queue\detail.html:39
 #, python-format
 msgid "Up to <b>%(max_options)s</b> options may be selected"
 msgstr ""
@@ -669,13 +841,6 @@ msgstr ""
 msgid "Change topic type"
 msgstr ""
 
-#: .\templates\machina\forum_search\search.html:5
-#: .\templates\machina\forum_search\search.html:11
-#: .\templates\machina\forum_search\search.html:32
-#: .\templates\machina\forum_search\search.html:42
-msgid "Search"
-msgstr "Поиск"
-
 #: .\templates\machina\forum_search\search.html:18
 msgid "Search forums"
 msgstr ""
@@ -689,13 +854,14 @@ msgstr ""
 msgid "Your search has returned <b>%(number_of_results)s</b> result"
 msgid_plural "Your search has returned <b>%(number_of_results)s</b> results"
 msgstr[0] "Ваш поисковый запрос вернул <b>%(number_of_results)s</b> результат"
-msgstr[1] "Ваш поисковый запрос вернул <b>%(number_of_results)s</b> результатов"
+msgstr[1] ""
+"Ваш поисковый запрос вернул <b>%(number_of_results)s</b> результатов"
 
 #: .\templates\machina\forum_search\search.html:70
 msgid "Results"
 msgstr ""
 
-#: .\templates\machina\forum_search\search.html:101
+#: .\templates\machina\forum_search\search.html:103
 msgid "No results."
 msgstr ""
 
@@ -727,29 +893,162 @@ msgstr ""
 msgid "Forum index"
 msgstr "Форум"
 
-msgid "Search for keywords"
-msgstr "Искать по ключевому слову"
+#: .\templates\pinax\notifications\email_body.txt:1
+#, python-format
+msgid ""
+"Вы получили новое уведомление с сайта %(current_site)s:\n"
+"\n"
+"%(message)s\n"
+"\n"
+"Чтобы изменить настройки получения уведомлений, пожалуйста, перейдите по "
+"ссылке %(default_http_protocol)s://%(current_site)s%(notices_url)s?"
+"action=edit_notifications\n"
+msgstr ""
 
-msgid "Search only in topic subjects"
-msgstr "Искать только в названиях тем"
+#: .\templates\pinax\notifications\email_subject.txt:1
+#, python-format
+msgid "[%(current_site)s] %(message)s"
+msgstr ""
 
-msgid "Search for poster"
-msgstr "Искать по имени автора"
+#: .\templates\pinax\notifications\full.txt:1
+#: .\templates\pinax\notifications\short.txt:1
+#, python-format
+msgid "%(notice)s"
+msgstr ""
 
-msgid "Search in specific forums"
-msgstr "Искать в определённых форумах"
+#: .\templates\pinax\notifications\messages_deleted\full.txt:1
+#, python-format
+msgid "You have deleted the message '%(message)s'."
+msgstr ""
 
-msgid "Select the forums you wish to search in."
-msgstr "Выберите форумы для поиска в них"
+#: .\templates\pinax\notifications\messages_deleted\notice.html:1
+#, python-format
+msgid ""
+"You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
+msgstr ""
 
-msgid "Enter a user name to limit the search to a specific user."
-msgstr "Введите имя пользователя"
+#: .\templates\pinax\notifications\messages_received\full.txt:1
+#, python-format
+msgid ""
+"%(message_sender)s has sent you a message:\n"
+"\n"
+"%(message)s\n"
+"\n"
+"%(message_body)s\n"
+"\n"
+"http://%(current_site)s%(message_url)s"
+msgstr ""
 
-msgid "Post topic as"
-msgstr "Тип темы"
+#: .\templates\pinax\notifications\messages_received\notice.html:2
+#, python-format
+msgid ""
+"You have received the message <a href=\"%(message_url)s\">%(message)s</a> "
+"from %(message_sender)s."
+msgstr ""
 
-msgid "Sticky"
-msgstr "Прикреплённая тема"
+#: .\templates\pinax\notifications\messages_received\short.txt:1
+#: .\templates\pinax\notifications\messages_reply_received\short.txt:1
+#, python-format
+msgid "%(notice)s by %(message_sender)s"
+msgstr ""
 
-msgid "Announce"
-msgstr "Объявление"
+#: .\templates\pinax\notifications\messages_recovered\full.txt:1
+#, python-format
+msgid "You have recovered the message '%(message)s'."
+msgstr ""
+
+#: .\templates\pinax\notifications\messages_recovered\notice.html:1
+#, python-format
+msgid ""
+"You have recovered the message <a href=\"%(message_url)s\">%(message)s</a>."
+msgstr ""
+
+#: .\templates\pinax\notifications\messages_replied\full.txt:1
+#, python-format
+msgid ""
+"You have replied to '%(message_parent_msg)s' from %(message_recipient)s."
+msgstr ""
+
+#: .\templates\pinax\notifications\messages_replied\notice.html:2
+#, python-format
+msgid ""
+"You have replied to <a href=\"%(message_url)s\">%(message_parent_msg)s</a> "
+"from %(message_recipient)s."
+msgstr ""
+
+#: .\templates\pinax\notifications\messages_reply_received\full.txt:1
+#, python-format
+msgid ""
+"%(message_sender)s replied to '%(message_parent_msg)s':\n"
+"\n"
+"%(message)s\n"
+"\n"
+"%(message_body)s\n"
+"\n"
+"http://%(current_site)s%(message_url)s"
+msgstr ""
+
+#: .\templates\pinax\notifications\messages_reply_received\notice.html:2
+#, python-format
+msgid "%(message_sender)s has sent you a reply to %(message_parent_msg)s."
+msgstr ""
+
+#: .\templates\pinax\notifications\messages_sent\full.txt:1
+#, python-format
+msgid "You have sent the message '%(message)s' to %(message_recipient)s."
+msgstr ""
+
+#: .\templates\pinax\notifications\messages_sent\notice.html:2
+#, python-format
+msgid ""
+"You have sent the message <a href=\"%(message_url)s\">%(message)s</a> to "
+"%(message_recipient)s."
+msgstr ""
+
+#: .\templates\pinax\notifications\notice_settings.html:7
+#: .\templates\pinax\notifications\notice_settings.html:10
+msgid "Notification Settings"
+msgstr ""
+
+#: .\templates\pinax\notifications\notice_settings.html:14
+#, python-format
+msgid ""
+"\n"
+"        <p class=\"alert alert-warning\">\n"
+"            <span class=\"warning\">Note</span>:\n"
+"            You do not have a verified email address to which notices can be "
+"sent. <a href=\"%(email_url)s\">Add one</a> now.\n"
+"        </p>\n"
+"        "
+msgstr ""
+
+#: .\templates\pinax\notifications\notice_settings.html:51
+msgid "Change"
+msgstr ""
+
+#~ msgid "Search for keywords"
+#~ msgstr "Искать по ключевому слову"
+
+#~ msgid "Search only in topic subjects"
+#~ msgstr "Искать только в названиях тем"
+
+#~ msgid "Search for poster"
+#~ msgstr "Искать по имени автора"
+
+#~ msgid "Search in specific forums"
+#~ msgstr "Искать в определённых форумах"
+
+#~ msgid "Select the forums you wish to search in."
+#~ msgstr "Выберите форумы для поиска в них"
+
+#~ msgid "Enter a user name to limit the search to a specific user."
+#~ msgstr "Введите имя пользователя"
+
+#~ msgid "Post topic as"
+#~ msgstr "Тип темы"
+
+#~ msgid "Sticky"
+#~ msgstr "Прикреплённая тема"
+
+#~ msgid "Announce"
+#~ msgstr "Объявление"

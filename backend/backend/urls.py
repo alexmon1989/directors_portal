@@ -22,12 +22,14 @@ from django.conf.urls.static import static
 from apps.my_auth.views import MyLoginView
 from django_messages.views import reply
 from apps.core_app.utils import format_quote
+from apps.faq.views import SectionListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.home.urls')),
     path('news/', include('apps.news.urls')),
     path('forum/', include(machina_urls)),
+    path('faq/', SectionListView.as_view(), name='faq'),
     url(
         r'^accounts/messages/reply/(?P<message_id>[\d]+)/$',
         reply,
