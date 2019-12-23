@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Файловое хранилище{% endblock %}
+
+{% block breadcrumbs %}
+    {% include 'file_storage/file/list/_partials/breadcrumbs.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row g-min-height-300">
+        <div class="col-md-12">
+            <div class="g-pa-15">
+                <a href="{% url 'file_storage:create-file' %}" class="btn u-btn-primary"><i class="fa fa-upload g-mr-5"></i>Добавить файл</a>
+            </div>
+
+            {% if file_list %}
+                <!-- Table Bordered -->
+                <div class="card-block table-responsive g-pa-15">
+                    <table class="table table-bordered u-table--v1 mb-0">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Наименование</th>
+                            <th>Размер</th>
+                            <th>Загрузил</th>
+                            <th>Дата загрузки</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for file in file_list %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><a class="g-font-weight-600" href="{% url "file_storage:file-detail" file.pk %}">{{ file.title }}</a></td>
+                                <td>{{ file.file.size|filesizeformat }}</td>
+                                <td><a href="{% url 'profile_details' file.user.pk %}">{{ file.user.get_name }}</a></td>
+                                <td>{{ file.created_at }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End Table Bordered -->
+            {% else %}
+                <p class="lead g-font-weight-500">Файлы отсутствуют.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

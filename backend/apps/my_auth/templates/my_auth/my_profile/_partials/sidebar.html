@@ -17,8 +17,8 @@
         <span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> Пользователи Портала</span>
     </a>
 
-    <a href="#"
-       class="list-group-item list-group-item-action justify-content-between">
+    <a href="{% url 'file_storage:my-file-storage' %}"
+       class="list-group-item list-group-item-action justify-content-between {% if request.resolver_match.app_name == 'file_storage' %}active{% endif %}">
         <span><i class="icon-disc g-pos-rel g-top-1 g-mr-8"></i> Моё файловое хранилище</span>
     </a>
 

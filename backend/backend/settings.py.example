@@ -67,6 +67,8 @@ INSTALLED_APPS = [
 
     'pinax.notifications',
 
+    'django_cleanup.apps.CleanupConfig',
+
     'debug_toolbar',
 
     'apps.home',

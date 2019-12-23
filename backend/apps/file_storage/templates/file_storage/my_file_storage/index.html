@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load thumbnail %}
+
+{% block title %}Моё файловое хранилище{% endblock %}
+
+{% block breadcrumbs %}
+    <section class="g-my-30">
+        <div class="container">
+            <ul class="u-list-inline">
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="/">Главная</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-mr-7">
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="{% url "file_storage:section-list" %}">Файловое хранилище</a>
+                    <i class="fa fa-angle-right g-ml-7"></i>
+                </li>
+                <li class="list-inline-item g-color-primary">
+                    <span>Мои файлы</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row g-mt-minus-30">
+        <div class="col-lg-3 g-mb-50 g-mb-0--lg">
+            <!-- User Image -->
+            <div class="profile-avatar">
+                {% if request.user.forum_profile.avatar %}
+                    <img class="img-fluid" src="{{ request.user.forum_profile.avatar.url }}"/>
+                {% else %}
+                    <img class="img-fluid" src="//via.placeholder.com/300x300?text=No+Photo"/>
+                {% endif %}
+            </div>
+            <!-- End User Image -->
+
+            <!-- Sidebar Navigation -->
+            {% include 'my_auth/my_profile/_partials/sidebar.html' %}
+            <!-- End Sidebar Navigation -->
+        </div>
+
+        <div class="col-lg-9">
+            <div class="g-mb-20">
+                <a href="{% url 'file_storage:create-file' %}" class="btn u-btn-primary"><i class="fa fa-upload g-mr-5"></i>Добавить файл</a>
+            </div>
+
+            {% if file_list %}
+                <!-- Table Bordered -->
+                <div class="card-block table-responsive g-pa-0">
+                    <table class="table table-bordered u-table--v1 mb-0">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Наименование</th>
+                            <th>Размер</th>
+                            <th>Одобрен администратором</th>
+                            <th>Дата загрузки</th>
+                            <th>Действия</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for file in file_list %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><a class="g-font-weight-600" href="{% url "file_storage:file-detail" file.pk %}">{{ file.title }}</a></td>
+                                <td>{{ file.file.size|filesizeformat }}</td>
+                                <td>{% if file.is_confirmed %}<span class="text-success">Да</span>{% else %}<span class="g-font-weight-600 text-danger">Нет</span>{% endif %}</td>
+                                <td>{{ file.created_at }}</td>
+                                <td>
+                                    <a class="btn btn-sm u-btn-bluegray g-mr-5" href="{% url 'file_storage:update-file' file.pk %}" title="Редактировать"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-sm u-btn-darkred" href="{% url 'file_storage:file-delete' file.pk %}" title="Удалить"><i class="fa fa-remove"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End Table Bordered -->
+            {% else %}
+                <p class="lead g-font-weight-500">Файлы отсутствуют.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

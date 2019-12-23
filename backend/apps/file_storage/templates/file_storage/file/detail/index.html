@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Файловое хранилище{% endblock %}
+
+{% block breadcrumbs %}
+    {% include 'file_storage/file/detail/_partials/breadcrumbs.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row g-min-height-300">
+        <div class="col-md-12">
+            <div class="g-mb-20">
+                <a href="{% url 'file_storage:create-file' %}" class="btn u-btn-primary"><i class="fa fa-upload g-mr-5"></i>Добавить файл</a>
+            </div>
+
+            <dl class="row">
+                <dt class="col-sm-3">Наименование</dt>
+                <dd class="col-sm-9">{{ file.title }}</dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-sm-3">Размер</dt>
+                <dd class="col-sm-9">{{ file.file.size|filesizeformat }}</dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-sm-3">ФИО пользователя</dt>
+                <dd class="col-sm-9"><a href="{% url 'profile_details' file.user.pk %}">{{ file.user.get_name }}</a></dd>
+            </dl>
+
+            {% if file.user == request.user or request.user.is_staff or request.user.is_administrator %}
+            <dl class="row">
+                <dt class="col-sm-3">Одобрен администратором</dt>
+                <dd class="col-sm-9">{% if file.is_confirmed %}<span class="text-success">Да</span>{% else %}<span class="g-font-weight-600 text-danger">Нет</span>{% endif %}</dd>
+            </dl>
+            {% endif %}
+
+            <dl class="row">
+                <dt class="col-sm-3">Дата загрузки материала на сайт</dt>
+                <dd class="col-sm-9">{{ file.created_at }}</dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-sm-3">Раздел</dt>
+                <dd class="col-sm-9"><a href="{% url 'file_storage:file-list' file.section.pk %}">{{ file.section.title }}</a></dd>
+            </dl>
+
+            {% if file.description %}
+                <dl class="row">
+                    <dt class="col-sm-3">Описание</dt>
+                    <dd class="col-sm-9">{{ file.description|safe|linebreaks }}</dd>
+                </dl>
+            {% endif %}
+
+            <a class="btn u-btn-primary" href="{{ file.file.url }}"><i class="fa fa-download g-mr-5"></i>Скачать</a>
+            {% if request.user.is_superuser or request.user.is_staff or request.user.pk == file.user.pk %}
+                <a class="g-ml-10 btn u-btn-bluegray" href="{% url 'file_storage:update-file' file.pk %}"><i class="fa fa-edit g-mr-5"></i>Редактировать</a>
+                <a class="g-ml-10 btn u-btn-darkred" href="{% url 'file_storage:file-delete' file.pk %}"><i class="fa fa-remove g-mr-5"></i>Удалить</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

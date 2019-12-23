@@ -30,6 +30,7 @@ urlpatterns = [
     path('news/', include('apps.news.urls')),
     path('forum/', include(machina_urls)),
     path('legal-info/', include('apps.legal_info.urls')),
+    path('file-storage/', include('apps.file_storage.urls')),
     path('faq/', SectionListView.as_view(), name='faq'),
     url(
         r'^accounts/messages/reply/(?P<message_id>[\d]+)/$',

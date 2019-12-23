@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Файловое хранилище{% endblock %}
+
+{% block breadcrumbs %}
+    {% include 'file_storage/file/delete/_partials/breadcrumbs.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row g-min-height-300">
+        <div class="col-md-12">
+            <form method="post">{% csrf_token %}
+                <p>Вы действительно хотите удалить файл "<a href="{% url "file_storage:file-detail" file.pk %}">{{ file.title }}</a>"?</p>
+                <button type="submit" class="btn u-btn-darkred"><i class="fa fa-remove g-mr-5"></i>Подтверждаю</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

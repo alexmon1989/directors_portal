@@ -13,7 +13,7 @@
                     <i class="fa fa-angle-right g-ml-7"></i>
                 </li>
                 <li class="list-inline-item g-mr-7">
-                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Учётные записи</a>
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="{% url 'profiles_list' %}">Учётные записи</a>
                     <i class="fa fa-angle-right g-ml-7"></i>
                 </li>
                 <li class="list-inline-item g-color-primary">
@@ -151,7 +151,7 @@
                                                 <p><small>Тем на форуме</small></p>
                                             </div>
                                             <div class="col-12 col-sm-4 emphasis">
-                                                <h2><strong>0</strong></h2>
+                                                <h2><strong>{{ files_count }}</strong></h2>
                                                 <p><small>Файлов в файлохранилище</small></p>
                                             </div>
                                         </div>

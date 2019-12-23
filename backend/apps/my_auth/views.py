@@ -25,6 +25,8 @@ from pinax.notifications.views import NoticeSettingsView
 from .tokens import account_activation_token
 from .forms import SignUpForm, ProfileForm
 
+from apps.file_storage.models import File
+
 
 class MyLoginView(LoginView):
     """Класс для управления авторизацией пользователей."""
@@ -146,6 +148,10 @@ class MyProfileInformationView(LoginRequiredMixin, TemplateView):
         )
         context['recent_posts'] = context['recent_posts'][:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
 
+        context['files_count'] = (
+            File.objects.filter(user=self.request.user, is_confirmed=True, is_visible=True).count()
+        )
+
         self.request.user.refresh_from_db()
 
         return context
@@ -247,6 +253,10 @@ class ProfileView(LoginRequiredMixin, DetailView):
                 .order_by('-created')
         )
         context['recent_posts'] = context['recent_posts'][:machina_settings.PROFILE_RECENT_POSTS_NUMBER]
+
+        context['files_count'] = (
+            File.objects.filter(user=self.object.user, is_confirmed=True, is_visible=True).count()
+        )
 
         return context
 

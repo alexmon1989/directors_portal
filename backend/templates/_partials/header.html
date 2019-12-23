@@ -42,8 +42,8 @@
                         <li class="nav-item g-mx-20--lg {% if request.resolver_match.app_name == 'forum' %}active{% endif %}">
                             <a href="{% url 'forum:index' %}" class="nav-link px-0">Форум</a>
                         </li>
-                        <li class="nav-item g-mx-20--lg">
-                            <a href="#!" class="nav-link px-0">Файловое хранилище</a>
+                        <li class="nav-item g-mx-20--lg g-mr-0--lg {% if request.resolver_match.app_name == 'file_storage' %}active{% endif %}">
+                            <a href="{% url 'file_storage:section-list' %}" class="nav-link px-0">Файловое хранилище</a>
                         </li>
                         <li class="nav-item g-mx-20--lg {% if request.resolver_match.url_name == 'faq' %}active{% endif %}">
                             <a href="{% url 'faq' %}" class="nav-link px-0">Справка</a>
