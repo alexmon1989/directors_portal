@@ -34,15 +34,15 @@
                     <hr class="g-mt-0">
 
                     {% for question in section.question_set.all %}
-                        <dl id="#question-{{ question.pk }}" class="g-mb-0">
+                        <dl id="question-{{ question.pk }}" class="g-mb-0">
                             <div class="d-flex">
-                                <dt class="g-width-30"><abbr title="Вопрос">В.</abbr></dt>
-                                <dd>{{ question.title }}</dd>
+                                <dt><abbr title="Вопрос">В.</abbr></dt>
+                                <dd class="g-pl-20">{{ question.title }}</dd>
                             </div>
 
                             <div class="d-flex">
-                                <dt class="g-width-30"><abbr title="Ответ">О.</abbr></dt>
-                                <dd>{{ question.answer|safe }}</dd>
+                                <dt><abbr title="Ответ">О.</abbr></dt>
+                                <dd class="g-pl-20">{{ question.answer|safe }}</dd>
                             </div>
                         </dl>
 

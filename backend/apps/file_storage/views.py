@@ -22,14 +22,17 @@ class SectionListView(LoginRequiredMixin, ListView):
 
 class FileListView(LoginRequiredMixin, ListView):
     """Отображает страницу списка файлов."""
-    queryset = File.objects.filter(
-        is_visible=True,
-        is_confirmed=True
-    ).order_by(
-        '-created_at'
-    )
     model = File
     template_name = 'file_storage/file/list/index.html'
+
+    def get_queryset(self):
+        return File.objects.filter(
+            is_visible=True,
+            is_confirmed=True,
+            section=self.kwargs['pk']
+        ).order_by(
+            '-created_at'
+        )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

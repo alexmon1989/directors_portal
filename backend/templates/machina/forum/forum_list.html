@@ -116,7 +116,7 @@
                             <div class="col-md-1 d-none d-md-block forum-count"></div>
                             <div class="py-2 col-md-3 col-sm-3 d-none d-sm-block forum-link-redirects">
                                 {% if node.obj.link_redirects %}
-                                    {% trans "Total redirects:" %}&nbsp;{{ node.obj.link_redirects_count|default:"0" }}
+                                    {% trans "Всего переходов:" %}&nbsp;{{ node.obj.link_redirects_count|default:"0" }}
                                 {% endif %}
                             </div>
                         {% endif %}
@@ -200,7 +200,7 @@
                                 <div class="col-md-1 d-none d-md-block forum-count"></div>
                                 <div class="py-2 col-md-3 col-sm-3 d-none d-sm-block forum-last-post forum-link-redirects">
                                     {% if node.obj.link_redirects %}
-                                        {% trans "Total redirects:" %}&nbsp;
+                                        {% trans "Всего переходов:" %}&nbsp;
                                         {{ node.obj.link_redirects_count|default:"0" }}
                                     {% endif %}
                                 </div>

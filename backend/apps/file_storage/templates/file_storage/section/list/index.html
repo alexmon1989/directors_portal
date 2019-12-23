@@ -9,12 +9,12 @@
 {% block content %}
     <div class="row g-min-height-300">
         <div class="col-md-12">
-            <div class="g-pa-15 d-flex justify-content-between">
-                <a href="{% url 'file_storage:create-file' %}" class="btn u-btn-primary"><i class="fa fa-upload g-mr-5"></i>Добавить файл</a>
-                <a href="" class="btn u-btn-brown"><i class="fa fa-search g-mr-5"></i>Поиск файлов</a>
-            </div>
-
             {% if section_list %}
+                <div class="g-pa-15 d-flex justify-content-between">
+                    <a href="{% url 'file_storage:create-file' %}" class="btn u-btn-primary"><i class="fa fa-upload g-mr-5"></i>Добавить файл</a>
+                    <a href="" class="btn u-btn-brown"><i class="fa fa-search g-mr-5"></i>Поиск файлов</a>
+                </div>
+
                 <!-- Table Bordered -->
                 <div class="card-block table-responsive">
                     <table class="table table-bordered u-table--v1 mb-0">
