@@ -73,7 +73,8 @@ INSTALLED_APPS = [
     'apps.news.apps.NewsConfig',
     'apps.core_app',
     'apps.my_auth',
-    'apps.faq',
+    'apps.faq.apps.FaqConfig',
+    'apps.legal_info.apps.LegalInfoConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Правовая иформация{% endblock %}
+
+{% block breadcrumbs %}
+    {% include 'legal_info/_partials/breadcrumbs.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row g-min-height-300">
+        <div class="col-md-12">
+            <ul class="list-unstyled g-font-size-16" id="faq-list">
+                {% for link in link_list %}
+                    <li><a href="{{ link.link }}">{{ link.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
