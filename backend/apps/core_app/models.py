@@ -56,6 +56,10 @@ class User(AbstractBaseUser, PermissionsMixin):
             return minutes < 15
         return False
 
+    @property
+    def username(self):
+        return self.email
+
     def __str__(self):
         return self.email
 
