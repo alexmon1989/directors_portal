@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block title %}Подтверждение входа на сайт{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-sm-8 col-lg-6">
+            <div class="g-brd-around g-brd-gray-light-v4 rounded g-py-40 g-px-30">
+                <header class="text-center mb-4">
+                    <h2 class="h2 g-color-black g-font-weight-600">Подтвержение входа на сайт</h2>
+                </header>
+
+                <!-- Form -->
+                <form class="g-py-15" action="" method="post">
+                    {% if form.errors %}
+                        <div class="alert fade show g-bg-red-opacity-0_1 g-color-lightred rounded-0" role="alert">
+                            <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert"
+                                    aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+
+                            <div class="media">
+                                <div class="media-body">
+                                    <p class="m-0">Форма содержит ошибки.</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% csrf_token %}
+
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    <div id="div_id_{{ form.value.html_name }}" class="mb-4 form-group{% if form.value.errors %} u-has-error-v1{% endif %}">
+                        <div class="controls">
+                            {% if form.value.label %}<label class="g-color-gray-dark-v2 g-font-weight-600 g-font-size-13" for="{{ form.value.auto_id }}">
+                                {{ form.value.label }}{% if not form.value.field.required %}
+                                    <span class="text-muted">{% trans "(optional)" %}</span>{% endif %}:</label>{% endif %}
+                            {{ form.value|append_attr:'placeholder:Введите код с E-Mail'|add_class:'form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v2 g-brd-primary--hover rounded g-py-15 g-px-15' }}
+                            {% if form.value.help_text %}
+                                <p class="help-block text-muted g-mb-0">
+                                    <small>{{ form.value.help_text }}</small>
+                                </p>{% endif %}
+                            {% for error in form.value.errors %}
+                                <small class="form-control-feedback">{{ error }}</small><br>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-end">
+                        <div class="col align-self-center text-right">
+                            <button class="btn btn-md u-btn-primary rounded g-py-13 g-px-25" type="submit">Подтвердить</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End Form -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

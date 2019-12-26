@@ -5,16 +5,19 @@ from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import login as auth_login
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode, is_safe_url
 from django.utils.encoding import force_bytes
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.models import Group
-from django.shortcuts import redirect, render
-from django.http import HttpResponse
+from django.shortcuts import redirect, render, reverse, resolve_url
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.conf import settings
+from django.contrib.auth.views import SuccessURLAllowedHostsMixin
 from machina.apps.forum_member.models import ForumProfile
 from machina.apps.forum_conversation.models import Post, Topic
 from machina.apps.forum.models import Forum
@@ -23,21 +26,56 @@ from machina.apps.forum_member.forms import ForumProfileForm
 from pinax.notifications.views import NoticeSettingsView
 
 from .tokens import account_activation_token
-from .forms import SignUpForm, ProfileForm
+from .forms import SignUpForm, ProfileForm, LoginConfirmationForm
+from .models import LoginToken
 
 from apps.file_storage.models import File
+
+import random
+import string
+import hashlib
 
 
 class MyLoginView(LoginView):
     """Класс для управления авторизацией пользователей."""
+    def get_success_url(self):
+        redirect_to = self.request.POST.get(
+            self.redirect_field_name,
+            self.request.GET.get(self.redirect_field_name, '')
+        )
+        if redirect_to:
+            return f"{reverse('login_confirmation')}?next={redirect_to}"
+        return reverse('login_confirmation')
 
     def form_valid(self, form):
-        """Авторизирует пользователя и возвращает код 200, если логин и пароль верны."""
+        """отправляет на почту код для входа на сайт"""
+        user = form.get_user()
+        self.request.session['user_id'] = user.pk
+
+        # Генерация токена
+        code = ''.join(random.choices(string.digits, k=6))
+
+        # Сохранение токена в БД
+        LoginToken.objects.create(
+            user=user,
+            value=hashlib.sha256(code.encode()).hexdigest()
+        )
+
+        # Отправка кода доступа на почту
+        send_mail(
+            subject='Код для входа на сайт',
+            message=code,
+            html_message=code,
+            recipient_list=[user.email],
+            from_email=None
+        )
+
         # Если пользователь не нажал "Запомнить меня", то сессия заканчивается при закрытии браузера.
         if not int(self.request.POST.get('rememberme', 0)):
             self.request.session.set_expiry(0)
 
-        return super().form_valid(form)
+        return HttpResponseRedirect(self.get_success_url())
+        # return super().form_valid(form)
 
 
 class SignUpView(FormView):
@@ -271,3 +309,39 @@ class UsersListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['profile'] = ForumProfile.objects.filter(user=self.request.user).first()
         return context
+
+
+class LoginConfirmation(SuccessURLAllowedHostsMixin, FormView):
+    """Страница с формой подтверждения авторизации."""
+    form_class = LoginConfirmationForm
+    template_name = 'my_auth/login_conformation/index.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.session.get('user_id'):
+            return HttpResponseForbidden()
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user_id'] = self.request.session['user_id']
+        return kwargs
+
+    def get_success_url(self):
+        url = self.get_redirect_url()
+        return url or resolve_url(settings.LOGIN_REDIRECT_URL)
+
+    def get_redirect_url(self):
+        redirect_to = self.request.GET.get('next', '')
+        url_is_safe = is_safe_url(
+            url=redirect_to,
+            allowed_hosts=self.get_success_url_allowed_hosts(),
+            require_https=self.request.is_secure(),
+        )
+        return redirect_to if url_is_safe else ''
+
+    def form_valid(self, form):
+        """Security check complete. Log the user in."""
+        auth_login(self.request, form.user)
+        LoginToken.objects.filter(user=form.user).delete()
+        del self.request.session['user_id']
+        return HttpResponseRedirect(self.get_success_url())
