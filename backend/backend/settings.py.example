@@ -26,7 +26,7 @@ SECRET_KEY = '8s-y5hsirx%i$bj_#&(%w)a4km)1ita-xa4qt)zi5tb@59$*t)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -57,17 +57,15 @@ INSTALLED_APPS = [
     'machina.apps.forum_member',
     'machina.apps.forum_permission',
 
+    'sorl.thumbnail',
+
+    'pinax.notifications',
+
     'django_messages',
     'django.contrib.sites',
 
     'ckeditor',
     'ckeditor_uploader',
-
-    'sorl.thumbnail',
-
-    'pinax.notifications',
-
-    'django_cleanup.apps.CleanupConfig',
 
     'debug_toolbar',
 
@@ -77,6 +75,7 @@ INSTALLED_APPS = [
     'apps.my_auth',
     'apps.faq.apps.FaqConfig',
     'apps.legal_info.apps.LegalInfoConfig',
+    'apps.file_storage.apps.FileStorageConfig',
 ]
 
 MIDDLEWARE = [
@@ -158,7 +157,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -292,6 +291,12 @@ INTERNAL_IPS = [
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'login@example.com'
+EMAIL_HOST_PASSWORD = 'password'
+DEFAULT_FROM_EMAIL = 'login@example.com'
+EMAIL_USE_TLS = True
 
 PINAX_USE_SSL = False

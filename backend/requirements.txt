@@ -11,6 +11,7 @@ django-machina==1.0.2
 django-messages==0.6.0
 django-mptt==0.10.0
 django-widget-tweaks==1.4.5
+gunicorn==20.0.4
 idna==2.8
 markdown2==2.3.8
 Pillow==6.2.1

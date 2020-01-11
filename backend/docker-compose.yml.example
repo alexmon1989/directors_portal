@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    container_name: directors_portal_web
+    build: .
+    restart: always
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn backend.wsgi -b 0.0.0.0:8000 -w 3"
+    volumes:
+      - .:/code
+      - /var/python_projects/directors_portal/static:/static
+      - /var/python_projects/directors_portal/media:/media
+      - /var/python_projects/directors_portal/frontend:/frontend
+      - /var/python_projects/directors_portal/whoosh_index:/whoosh_index
+    ports:
+      - "8000:8000"
