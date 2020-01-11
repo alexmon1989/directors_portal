@@ -176,7 +176,7 @@ STATICFILES_DIRS = (
     MACHINA_MAIN_STATIC_DIR,
     '../frontend/assets'
 )
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'apps.core_app.storage.ForgivingManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, "../static")
 
 MEDIA_URL = '/media/'
