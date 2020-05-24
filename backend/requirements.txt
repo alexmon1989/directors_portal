@@ -1,3 +1,5 @@
+beautifulsoup4==4.9.1
+bs4==0.0.1
 certifi==2019.11.28
 chardet==3.0.4
 Django==2.2.7
@@ -13,13 +15,16 @@ django-mptt==0.10.0
 django-widget-tweaks==1.4.5
 gunicorn==20.0.4
 idna==2.8
+lxml==4.5.1
 markdown2==2.3.8
 Pillow==7.0.0
 pinax-notifications==5.0.3
+pytils==0.3
 pytz==2019.3
 requests==2.22.0
 six==1.13.0
 sorl-thumbnail==12.5.0
+soupsieve==2.0.1
 sqlparse==0.3.0
 urllib3==1.25.7
 Whoosh==2.7.4
