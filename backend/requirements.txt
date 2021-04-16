@@ -6,7 +6,7 @@ Django==2.2.7
 django-appconf==1.0.3
 django-ckeditor==5.8.0
 django-cleanup==4.0.0
-django-debug-toolbar==2.1
+django-debug-toolbar==2.2.1
 django-haystack==2.8.1
 django-js-asset==1.2.2
 django-machina==1.0.2
